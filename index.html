@@ -990,6 +990,294 @@
 	</pre>
 </section>
 
+<section>
+	<h1>Control Flow</h1>
+</section>
+
+<section>
+	<h3>if expression</h3>
+	<ul>
+		<li>The most common way to introduce control flow and branch code.</li>
+		<li>Provide a condition and then execute the block of code if the condition is met.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main() {
+				let price: i32 = 10;
+				if price > 0 {
+				   println!(“true”);
+				}
+			}			 
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>if-else expression</h3>
+	<ul>
+		<li>An else expression can be added optionally.</li>
+		<li>If no else is provided the program will skip the if block if the condition is false.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let price: i32 = 10;
+				if price > 0 {
+				  println!(“true”);
+				}
+				else {
+				  println!(“false”);
+				}
+			}						  
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>else-if expression</h3>
+	<ul>
+		<li>If you have more than two condition to check, if and else can be combined in else if expression.</li>
+		<li>In the case all if and else if conditions evaluates to false, then the else block is executed.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let price: i32 = 10;
+				if price == 1 {
+				  println!(“price is 1.”);
+					}
+				else if price = 2 {
+				  println!(“price is 2.”);
+				}
+				else {
+				  println!(“other price”);
+				}
+			}							   
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>match</h3>
+	<ul>
+		<li>Rust provides pattern matching with the match keyword</li>
+		<li>A scrutinee expression is provided to compare to the patterns.</li>
+		<li>Arms are evaluated and compared with the scrutineer expression</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let x = 1;
+				match x {
+				  1 => println!(“one”),
+				  2 => println!(“two”),
+				  3 => println!(“three”),
+				  4 => println!(“four”),
+				  5 => println!(“five”),
+				  _ => println!(“something else”),
+				}
+			}									
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>match</h3>
+	<ul>
+		<li>Here the scrutineer expression is x.</li>
+		<li>Each arm has a pattern and some code. The “=>” operator separates the pattern and the code to run.</li>
+		<li>The first arm with the matching pattern is chosen as the branch target of the match.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let x = 1;
+				match x {
+				  1 => println!(“one”),
+				  2 => println!(“two”),
+				  3 => println!(“three”),
+				  4 => println!(“four”),
+				  5 => println!(“five”),
+				  _ => println!(“something else”),
+				}
+			}							 
+		</code>
+		<a href="https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs">Run in online editor</a>
+	</pre>
+</section>
+
+<section>
+	<h3>loop</h3>
+	<ul>
+		<li>Used to execute over block of code forever, Or until it is stopped, or the program quits.</li>
+		<li>Instead of having this loop infinitely the break keyword can be used.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main() { 
+				let mut i = 0; 
+			  
+				loop { 
+				  i += 1; 
+			  
+				  if i > 100 { break; } 
+				}
+			} 								
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>while</h3>
+	<ul>
+		<li>Conditional loops</li>
+		<li>Run until the condition is met or become false</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let mut num = 3;
+				while num !=0 {
+				  println!(“{}”, num);
+				  num -= 1;
+				}
+				println!(“LIFTOFF!!”); 
+			}						 
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>for loop</h3>
+	<ul>
+		<li>Iterate over a element in a collection</li>
+		<li>Each pass of the loop extracts values</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let a = [10, 20, 30, 40, 50];
+				for element in a.iter() {
+				  println!(“the value is {}”, element);
+				} 
+			}				  
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>iterators</h3>
+	<ul>
+		<li>In Rust, iterators help us achieve the process of looping.</li>
+		<li>Using the <strong><em>iter()</em></strong> function, we tell Rust that the given array can be used with a loop.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let a = [10, 20, 30, 40, 50];
+				for element in a.iter() {
+				  println!(“the value is {}”, element);
+				} 
+			}				   
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>iterator trait</h3>
+	<ul>
+		<li>In Rust, all iterators implement a trait named “iterator” that has a method called <strong><em>next()</em></strong></li>
+		<li>Using the <strong><em>iter()</em></strong> function, we tell Rust that the given array can be used with a loop.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let a = [10, 20, 30, 40, 50];
+				for element in a.iter() {
+				  println!(“the value is {}”, element);
+				} 
+			}				   
+		</code>
+	</pre>
+	<p>Any data type which implements <strong><em>next()</em></strong> method can be iterator.</p>
+</section>
+
+<section>
+	<p>Difference in into_iter, iter, iter_mut.</p>
+	<ul>
+		<li><strong><em>into_iter:</em></strong> Consumes the collection, once the collection has been consumed, it is no longer available for reuse.</li>
+		<li><strong><em>iter:</em></strong> This borrows each element of the collection through each iteration, thus leaving the collection untouched and available for reuse after the loop</li>
+		<li><strong><em>iter_mut:</em></strong> This mutably borrows each element of the collection, allowing for the collection to be modified in place.</li>
+	</ul>
+</section>
+
+<section>
+	<p>Creating our own iterator</p>
+	<p>Excercise:</p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			struct Counter {
+				count: u32,
+			}
+			impl Counter {
+				fn new() -> Counter {
+					Counter { count: 0 }
+				}
+			}
+			impl Iterator for Counter {
+				type Item = u32;
+				fn next(&mut self) -> Option< Self::Item> {
+					if self.count < 5 {
+						self.count += 1;
+						Some(self.count)
+					} else {
+						None
+					}
+				}
+			}
+			fn main() {
+				let mut counter = Counter::new();
+				assert_eq!(counter.next(), Some(1));
+				assert_eq!(counter.next(), Some(2));
+				assert_eq!(counter.next(), Some(3));
+				assert_eq!(counter.next(), Some(4));
+				assert_eq!(counter.next(), Some(5));
+				assert_eq!(counter.next(), None);
+			}				   
+		</code>
+		<a href="https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs">Run in online editor</a>
+	</pre>
+</section>
+
+<section>
+	<h1>Rust's Ownership & Borrowing</h1>
+</section>
+
+<section>
+	<h3>Ownership</h3>
+	<ul>
+		<li>The “owner” can change the owning value according to mutability.</li>
+		<li>Ownership can transfer to an other variable.</li>
+		<li>Ownership model guarantees the safeness.</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Ownership rules</h3>
+	<p>Each value in Rust has an <strong><em>owner</em></strong></p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main () {
+				let vector1 = vec![1, 2, 3];
+			  }			   
+		</code>
+	</pre>
+	<p>Here `vector1` is <strong><em>owner</em></strong></p>
+</section>
+
+
 			</div>
 		</div>
 
