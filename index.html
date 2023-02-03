@@ -158,9 +158,6 @@
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn main() {
 				const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-				let c = 'z';
-				let z: char = 'ℤ'; // with explicit type annotation
-				let heart_eyed_cat = '😻';
 			}					 
 		</code>
 	</pre>
@@ -306,6 +303,15 @@
 		<li>Specify char literals with single quotes</li>
 		<li>Rust’s char type is four bytes in size and represents a Unicode Scalar Value, which means it can represent a lot more than just ASCII</li>
 	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main() {
+				let c = 'z';
+				let z: char = 'ℤ'; // with explicit type annotation
+				let heart_eyed_cat = '😻'; //emoji
+			}					 
+		</code>
+	</pre>
 </section>
 
 <section>
