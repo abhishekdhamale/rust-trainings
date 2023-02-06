@@ -15,6 +15,19 @@
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
 	<body>
+	<div id="EditorDiv" hidden>
+		<!-- <button onclick="CloseEditor()">Back to Presentation</button> -->
+		<iframe
+			id="EditorFrame"
+			style="width:100%; height:780px; border:0; border-radius: 4px; overflow:hidden; align-items: center; margin-top: 70px;"
+			sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock"
+		></iframe>
+		<!-- <embed src="https://codesandbox.io/embed/new?codemirror=1"
+		id="EditorFrame"
+		width=1200
+		height=800
+		onerror="alert('URL invalid !!');" /> -->
+	</div>
 <div class="reveal">
 
 	<div id="static-elements">
@@ -27,6 +40,7 @@
 		
 		<div class="header-center">
 			<!-- <div class="slide-chapter"></div> -->
+			<button id="BackToPresentation" class="BackBtn" onclick="CloseEditor()"><< Back to Presentation</button>
 		</div>
 		<div class="footer-center">
 			<!-- <div class="slide-title">test</div> -->
@@ -40,20 +54,7 @@
 		</div> -->
 	</div>
 
-	<div id="EditorDiv" align="center" hidden>
-		<iframe
-			id="EditorFrame"
-			src="https://codesandbox.io/embed/new?codemirror=1"
-			style="width:100%; height:800px; border:0; border-radius: 4px; overflow:hidden; align-items: center; margin-top: 70px;"
-			sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock"
-		></iframe>
 
-		<!-- <embed src="https://codesandbox.io/embed/new?codemirror=1"
-		id="EditorFrame"
-		width=1200
-		height=800
-		onerror="alert('URL invalid !!');" /> -->
-	</div>
 
 	<div class="slides" id="SlidesDiv">
 <!----------------------------------------------------------------------------+
@@ -82,11 +83,11 @@
 		<li><a href="#/39">Strings</a></li>
 		<li><a href="#/47">Memory Management</a></li>
 		<li><a href="#/70">Control Flow</a></li>
-		<li><a href="#/83">Ownership</a></li>
-		<li><a href="#/90">Traits</a></li>
-		<li><a href="#/102">Error Handling</a></li>
-		<li><a href="#/111">Concurrency</a></li>
-		<li><a href="#/119">Async and Await</a></li>
+		<li><a href="#/84">Ownership</a></li>
+		<li><a href="#/91">Traits</a></li>
+		<li><a href="#/103">Error Handling</a></li>
+		<li><a href="#/112">Concurrency</a></li>
+		<li><a href="#/120">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -1095,7 +1096,7 @@
 	<ul>
 		<li>This is the Stack memory area and there is <a>one stack per thread</a>.</li>
 		<li>This is where <a>static values are allocated</a> by default. </li>
-		<li>Static data(data size known at compile time) includes function frames, primitive values, Structs and pointers to dynamic data in Heap</li>
+		<li>Static data(data size known at compile time) includes function frames, primitive values, structs and pointers to dynamic data in Heap</li>
 	</ul>
 </section>
 
@@ -1540,8 +1541,8 @@
 +----------------------------------------------------------------------------->
 <section>
 	<p>Creating our own iterator</p>
-	<p>Excercise:</p>
 	<pre data-id="code-animation" style="font-size: 14px; height: 470px;">
+		<p style="font-size: 21px;">Example: </p>
 		<code class="hljs rust" data-trim data-line-numbers>
 			struct Counter {
 				count: u32,
@@ -1571,6 +1572,43 @@
 				assert_eq!(counter.next(), Some(5));
 				assert_eq!(counter.next(), None);
 			}				   
+		</code>
+	</pre>
+</section>
+
+<section>
+	<!-- <p>Creating our own iterator</p> -->
+	<p>Excercise:</p>
+	<pre data-id="code-animation" style="font-size: 14px; height: 470px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			struct Fibonacci {
+				curr: u32,
+				next: u32,
+			}
+			
+			// Implement `Iterator` for `Fibonacci`.
+			// The `Iterator` trait only requires a method to be defined for the `next` element.
+			impl Iterator for Fibonacci {
+				// We can refer to this type using Self::Item
+				type Item = u32;
+				
+				/* Implement next method */
+				fn next(&mut self)
+			}
+			
+			// Returns a Fibonacci sequence generator
+			fn fibonacci() -> Fibonacci {
+				Fibonacci { curr: 0, next: 1 }
+			}
+			
+			fn main() {
+				let mut fib = fibonacci();
+				assert_eq!(fib.next(), Some(1));
+				assert_eq!(fib.next(), Some(1));
+				assert_eq!(fib.next(), Some(2));
+				assert_eq!(fib.next(), Some(3));
+				assert_eq!(fib.next(), Some(5));
+			}	   
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
 		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs')"> in online editor</p>
@@ -1953,7 +1991,7 @@ fn main () {
 <section>
 	<h3><strong>+</strong> Operator & <strong>where</strong> Clause</h3>
 	<p><strong><a>+</a></strong> operator is used to add more trait bound.</p>
-	<pre data-id="code-animation" style="font-size: 22px;">
+	<pre data-id="code-animation" style="font-size: 19px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			pub fn calculate< T: Calculator + other_Trait> (item: T) -> u32 { 
 				/// function's stuff
@@ -1962,8 +2000,8 @@ fn main () {
 		</code>
 	</pre>
 
-	<p><strong>`<a>where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
-	<pre data-id="code-animation" style="font-size: 18px;">
+	<p style="font-size: 36px;"><strong>`<a>where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
+	<pre data-id="code-animation" style="font-size: 19px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			/// without where clause
 			pub fn calculate< T:Calculator, U:Display> (item: T, data: Display) -> u32 {
@@ -2035,7 +2073,7 @@ fn main () {
 	<p></p>
 	<h3>When to use panic ?</h3>
 	<ul>
-		<li>Panic only have to be used when a program comes to an unrecoverable state</li>
+		<li>Panic only have to be used when a program comes to an <a>unrecoverable state.</a></li>
 	</ul>
 </section>
 
@@ -2329,8 +2367,8 @@ use std::fs::File;
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Sync Trait</h2>
-	<p style="font-size: 34px;">If a type implements <a>Sync</a>, it is guaranteed to be <a>safe to share</a> between threads and a value of a type can be <a>accessed</a> in multiple threads at the <a>same time</a></p>
-	<pre data-id="code-animation" style="font-size: 20px;">
+	<p style="font-size: 33px;">If a type implements <a>Sync</a>, it is guaranteed to be <a>safe to share</a> between threads and a value of a type can be <a>accessed</a> in multiple threads at the <a>same time</a></p>
+	<pre data-id="code-animation" style="font-size: 18px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 		use std::sync::Arc;
 		use std::thread;
@@ -2376,10 +2414,10 @@ use std::fs::File;
 		
 		<ul>
 			<li><a>Preemptive Multitasking</a>
-				<P style="font-size: 36px;">Preemptive multitasking is that the operating system controls when to switch tasks.</P>
+				<P style="font-size: 32px;">Preemptive multitasking is that the operating system controls when to switch tasks.</P>
 			</li>
 			<li><a>Cooperative Multitasking</a>
-				<p style="font-size: 36px;">Cooperative multitasking lets each task run until it voluntarily gives up control of the CPU.</p>
+				<p style="font-size: 32px;">Cooperative multitasking lets each task run until it voluntarily gives up control of the CPU.</p>
 			</li>
 		</ul>
 	</ul>
@@ -2533,14 +2571,35 @@ use std::fs::File;
 			var SlidesDiv =  document.getElementById("SlidesDiv");
 			var EditorDiv = document.getElementById("EditorDiv");
 			var EditorFrame = document.getElementById("EditorFrame");
+			var BackButton = document.getElementById("BackToPresentation");
+			var CurrentURL = '';
+			var isEditorOpen = false;
+
+			var CloseEditor = function() {
+				isEditorOpen = false;
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				Reveal.prev();
+				Reveal.next();
+			}
 
 			var OpenEditor = function(url) {
+				
+				isEditorOpen = true;
 
 				// window.open(url);
 
-				SlidesDiv.hidden = true;
-				EditorDiv.hidden = false;
-				EditorFrame.src = url;
+				SlidesDiv.style.display = "none"; 
+				BackButton.style.display = "block";
+				EditorDiv.style.display = "block";
+				if(CurrentURL != url){
+					CurrentURL = url;
+					EditorFrame.src = url;
+				};
+
+				// SlidesDiv.hidden = true;
+				// EditorDiv.hidden = false;
 
 				// const iframeContainer = document.getElementById("EditorDiv");
 				// const iframe = document.getElementById("iframe");
@@ -2557,8 +2616,17 @@ use std::fs::File;
 			}
 
 			Reveal.addEventListener( 'slidechanged', function( event ) {
-				EditorDiv.hidden = true;
-				SlidesDiv.hidden = false;
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				// EditorDiv.hidden = true;
+				// SlidesDiv.hidden = false;
+
+				if(isEditorOpen) {
+					isEditorOpen = false;
+					Reveal.prev();
+					Reveal.next();
+				};
 				if(event.indexh>0) {
 					static_elements.hidden = false;
 					var number = "";
@@ -2576,7 +2644,6 @@ use std::fs::File;
 			Reveal.initialize({
 				hash: true,
 				transition: 'convex',
-
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});

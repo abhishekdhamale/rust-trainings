@@ -7,6 +7,14 @@
     color: white; 
     border-radius: 4px;
 }
+.BackBtn {
+    height: 32px; 
+    width: 240px; 
+    font-size: 20px; 
+    background-color: green; 
+    color: white; 
+    border-radius: 4px;
+}
 
 .reveal .controls {
     bottom: 1%;
