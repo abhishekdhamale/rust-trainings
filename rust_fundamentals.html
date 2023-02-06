@@ -427,60 +427,18 @@
 	</ul>
 </section>
 
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h2>Compound Types</h2>
-	<p><strong>Exercise-1</strong></p>
-	<p><small>(clue: all the array elements should be of same type)</small></p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			fn main() {
-
-				// Fix the error
-				let _arr = [1, 2, '3'];
-			
-				println!("Success!");
-			}							 
-		</code>
-		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p>
-	</pre>
-</section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Compound Types</h2>
-	<p><strong>Exercise-2</strong></p>
-	<p><small>(clue: indexing should start from 0)</small></p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			fn main() {
-				let arr = ['a', 'b', 'c'];
-				let ele = arr[1]; // Only modify this line to make the code work!
-				assert!(ele == 'a');
-				println!("Success!");
-			}
-		</code>
-		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h2>The Tuple Type</h2>
+	<h3>The Tuple Type</h3>
 	<ul style="font-size: 38px;">
 		<li>A tuple is a general way of <a>grouping</a> together a <a>different types</a> into one compound type</li>
-		<ul>
-			<li><strong>Fixed length</strong></li>
-			<li><strong>Known at Compile time</strong></li>
-			<li><strong>Homogeneous</strong></li>
+		<ul style="font-size: 38px;">
+			<li>Fixed length</li>
+			<li>Known at Compile time</li>
+			<li>Homogeneous</li>
 		</ul>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 16px;">
@@ -557,6 +515,49 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
+	<h2>Compound Types</h2>
+	<p><strong>Exercise-1</strong></p>
+	<p><small>(clue: all the array elements should be of same type)</small></p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main() {
+
+				// Fix the error
+				let _arr = [1, 2, '3'];
+			
+				println!("Success!");
+			}							 
+		</code>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p> -->
+		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h2>Compound Types</h2>
+	<p><strong>Exercise-2</strong></p>
+	<p><small>(clue: indexing should start from 0)</small></p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main() {
+				let arr = ['a', 'b', 'c'];
+				let ele = arr[1]; // Only modify this line to make the code work!
+				assert!(ele == 'a');
+				println!("Success!");
+			}
+		</code>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p> -->
+		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
 	<h2>Structure</h2>
 	<ul>
 		<li>Structs hold multiple related values</li>
@@ -617,8 +618,11 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Enums</h2>
-	<p>The <strong>`<a>enum</a>`</strong> keyword allows the creation of a type which may be one of a few different variants. Any variant which is valid as a struct is also valid as an enum</p>
-	<pre data-id="code-animation" style="font-size: 17px;">
+	<ul style="font-size: 34px;">
+		<li>The <strong>`<a>enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a>.</li>
+		<li>Any variant which is valid as a struct is also valid as an enum</li>
+	</ul>
+	<pre data-id="code-animation" style="font-size: 16px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			enum Work {
 				Civilian,
@@ -651,8 +655,8 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>What we are covering</h2>
-	<ul>
+	<h3>What we are covering</h3>
+	<ul style="font-size: 33px;">
 		<li>Define a function in rust</li>
 		<li>Call a function in rust</li>
 		<li>Function parameters</li>
@@ -742,7 +746,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Function with Return Value</h3>
-	<ul>
+	<ul style="font-size: 38px;">
 		<li>`<a><strong>-></strong></a>` syntax is used to specify the return type</li>
 		<li>possible to return a <a>without</a> explicitly using the `<a><strong>return</strong></a>` keyword</li>
 		<li>the <a>last expression</a> is returned as the result of function</li>
