@@ -740,7 +740,7 @@
 	<p>In this example function <strong>multiply</strong> accepts two parameters:</p>
 	<ol style="font-size: 36px;">
 		<li>'num1' - which has type f64 i.e. float 64</li>
-		<li>'num1' - which has type i64 i.e. integer 64</li>
+		<li>'num2' - which has type i64 i.e. integer 64</li>
 	</ol>
 </section>
 
@@ -782,7 +782,7 @@
 	<pre data-id="code-animation" style="font-size: 19px;">
 		Example:
 		<code class="hljs rust" data-trim data-line-numbers>
-			fn min< T: PartialOrd>(a: T, b: T) -> T {
+			fn min <T: PartialOrd> (a: T, b: T) -> T {
 				if a < b {
 					a
 				} else {
