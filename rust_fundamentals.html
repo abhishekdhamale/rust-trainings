@@ -81,10 +81,10 @@
 		<li><a href="#/4">Data types</a></li>
 		<li><a href="#/28">Functions</a></li>
 		<li><a href="#/39">Strings</a></li>
-		<li><a href="#/47">Memory Management</a></li>
-		<li><a href="#/70">Control Flow</a></li>
-		<li><a href="#/84">Ownership</a></li>
-		<li><a href="#/91">Traits</a></li>
+		<li><a href="#/45">Ownership</a></li>
+		<li><a href="#/52">Traits</a></li>
+		<li><a href="#/65">Memory Management</a></li>
+		<li><a href="#/88">Control Flow</a></li>
 		<li><a href="#/103">Error Handling</a></li>
 		<li><a href="#/112">Concurrency</a></li>
 		<li><a href="#/120">Async and Await</a></li>
@@ -439,7 +439,7 @@
 		<ul style="font-size: 38px;">
 			<li>Fixed length</li>
 			<li>Known at Compile time</li>
-			<li>Homogeneous</li>
+			<li>Heterogeneous</li>
 		</ul>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 16px;">
@@ -1019,6 +1019,377 @@
 			let str_slice = &s[0..2];
 		</code>
 		<p>Use `<a>&str</a>` when you just want to <a>borrow</a> a reference to a string</p>
+	</pre>
+</section>
+
+
+<!----------------------------------------------------------------------------+
+| Title Slide for topic: Ownership & Borrowing                                |
++----------------------------------------------------------------------------->
+<section>
+	<h1>Ownership & Borrowing</h1>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Ownership</h3>
+	<ul>
+		<li>Every resource has a unique <strong><a>owner</a></strong>.</li>
+		<li>The <strong>owner</strong> can change the owning value according to mutability.</li>
+		<li>Ownership <a>can be transferred</a> to an other variable.</li>
+		<li>Owner <a>cannot free or mutate</a> its resource <a>while it is borrowed</a>.</li>
+		<li>Ownership model guarantees <a>safety</a>.</li>
+	</ul>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Ownership Rules</h3>
+	<p>Each value in Rust has only <strong><a>one owner</a></strong></p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main () {
+				let vector1 = vec![1, 2, 3];
+			}			   
+		</code>
+	</pre>
+	<p>here '<em>vector1</em>' is <strong><em>owner</em></strong></p>
+	<pre data-id="code-animation" style="font-size: 21px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+fn main () {
+    let vector1 = vec![1, 2, 3];
+                  ~~~~~~~~~~~~~  <---
+                                     |
+                              This memory
+                            gets `deallocated`
+}   <------------------------- here `vector1` goes out of scope
+                          
+		</code>
+	</pre>
+	<p>Value is <strong><a>dropped</a>,</strong></p> when owner <a>goes out of scope</a>.</p>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Ownership Rules</h3>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+fn main () {
+
+  let vector1 = vec![1, 2, 3];  <--`vector1` is invalid variable
+  let vector2 = vector1;                        beacause
+      ~~~~~~~  <------------------ `vector2` is New Owner
+
+  println!("{:?}",vector1);
+}
+		</code>
+	</pre>
+
+	<pre data-id="code-animation">
+		Error:
+		<code class="hljs rust" data-trim data-line-numbers>
+error[E0382]: borrow of moved value: `vector1`
+    --> src/main.rs:4:19
+   |
+2  |   let vector1 = vec![1, 2, 3];
+   |       ------- move occurs because `vector1` has 
+   |               type `Vec< i32>`, which does not implement 
+   |               the `Copy` trait
+3  |   let vector2 = vector1;
+   |                 ------- value moved here
+4  |   println!("{:?}",vector1);
+   |                   ^^^^^^^ value borrowed here after move
+		</code>
+	</pre>
+
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Borrowing</h3>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+    let vector2 = &vector1;
+                  ^ -------------
+    someFunction(&vector1);      |---> Reference
+                 ^ --------------
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Borrowing Rules</h3>
+	<p>All references are <strong><em><a>immutable</a></em></strong></p> by default.</p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+fn main () {
+  let mut vector1 = vec![1, 2, 3];
+      ^^^  --------------------
+  let vector2 = &mut vector1;  |---> Explicitly mentioned  
+                 ^^^ ----------      as `mutable`
+                                     using `mut` keyword
+}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Borrowing Rules</h3>
+	<p>Not <strong><a>more than one</a></strong></p> 'mutable reference' is allowed in <em>a scope</em></p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+fn main () {
+   let mut _vector1 = vec![1, 2, 3];
+   let _vector2 = &mut _vector1;
+   let _vector3 = &mut _vector1;
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ---> NOT ALLOWED
+}
+		</code>
+	</pre>
+	<p>'mutable' and 'immutable' reference <strong><a>can not go hand in hand </a></strong><em>within a scope</em></p>
+
+</section>
+
+<!----------------------------------------------------------------------------+
+| Title Slide for topic: Traits in rust                                       |
++----------------------------------------------------------------------------->
+<section>
+	<h1>Traits</h1>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Traits</h3>
+	<ul>
+		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
+		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
+	</ul>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Trait Definition</h3>
+	<ul>
+		<li>Traits are defined by the <strong>`<a>trait</a>`</strong> keyword followed by the name of the trait</li>
+		<li>While defining any trait we have to provide method signatures (method declaration)</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub trait Calculator {
+				fn add(&self) -> i32;
+				fn sub(&self) -> i32;
+				fn div(&self) -> i32;
+				fn mul(&self) -> i32;
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Trait implementation</h3>
+	<ul>
+		<li><strong>`<a>impl</a>`</strong> keyword used to implement a trait</li>
+		<li><strong>`<a>for</a>`</strong> is used when implementing traits as in impl Trait for Type</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			impl trait_name for type_name {
+				
+				//method definitions
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<p><strong>Example</strong></p>
+	<pre data-id="code-animation" style="width: 800px; height: 420px; font-size: 14px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			struct Data {
+				first_num: i32,
+				second_num: i32
+			}
+			impl Calculator for Data {
+				fn add(&self) -> i32 {
+					self.first_num + self.second_num
+				}
+				fn sub(&self) -> i32 {
+					self.first_num - self.second_num
+				}
+				fn div(&self) -> i32 {
+					self.first_num / self.second_num
+				}
+				fn mul(&self) -> i32 {
+					self.first_num * self.second_num
+				}
+			}
+			fn main() {
+				println!("Output of Add: {}", Data {first_num:2, second_num: 2}.add());
+				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
+				println!("Output of Div: {}", Data {first_num:10, second_num: 2}.div());
+				println!("Output of Mul: {}", Data {first_num:2, second_num: 2}.mul());
+			}
+		</code>
+	</pre>
+	<pre data-id="code-animation" style="width: 800px; font-size: 15px;">
+		Output: 
+		<code class="hljs rust" data-trim data-line-numbers>
+		Compiling playground v0.0.1 (/playground)
+		Finished dev [unoptimized + debuginfo] target(s) in 0.59s
+			Running `target/debug/playground`
+
+		Output of Add: 4
+		Output of Sub: 2
+		Output of Div: 5
+		Output of Mul: 4
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Default implementation of trait</h3>
+	<ul>
+		<li>Rust allows you to provide a default implementation of the Trait’s methods</li>
+		<li>A Type can keep the implementation or can override also</li>
+		<li>In the same Trait, default implementation can call another method also</li>
+	</ul>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<p><strong>Example</strong></p>
+	<pre data-id="code-animation" style="width: 800px; height: 560px; font-size: 17px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub trait Calculator {
+				fn add(&self) -> i32;
+				fn sub(&self) -> i32;
+				fn get_result(&self) {
+					println!("The result of Addition is {}", self.add());
+				}
+			}
+			
+			struct Data {
+				first_num: i32,
+				second_num: i32
+			}
+			
+			impl Calculator for Data {
+				fn add(&self) -> i32 {
+					self.first_num + self.second_num
+				}
+			
+				fn sub(&self) -> i32 {
+					self.first_num - self.second_num
+				}
+			}
+			
+			fn main() {
+				Data {first_num:2, second_num: 2}.get_result();
+				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Implement traits for existing types</h3>
+	<ul>
+		<li>Unlike <em>interfaces</em> in languages like Java, new traits can be implemented for existing types</li>
+		<li>For example, we can implement <strong><a>trait</a></strong> for existing types like bool, f32, etc.</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			trait DAY {
+				fn sunday(&self) -> u64;
+			}
+			
+			impl DAY for bool {
+				fn sunday(&self) -> u64 {
+					if *self { 0 } else { 1 }
+				}
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Access Methods from the Same Trait</h3>
+	<p>We can <a>access</a> other <a>methods</a> declared <a>in the same trait</a> using `<a>self</a>`</p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			trait Calculator {
+				fn add(&self) -> u32;
+				// We can provide default method definitions.
+				fn get_result(&self) {
+					println!("Result of Add() is {}", self.add());
+				}
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Passing Trait as a Function’s Parameters</h3>
+	<p>Passing <em>trait</em> into a function’s parameter is a quite interesting concept in the traits environment so, with the help of this user can put the restriction into his functionality like only limit functions can able to use it.</p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub fn calculate(item: impl Calculator) {
+				println!("Addition {}", item.add());
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Trait Bound Concept</h3>
+	<p>Trait Bound Concept is quite similar to the Passing Trait as a Function’s Parameters but with some syntactical differences.</p>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub fn calculate< T: Calculator> (item: T) {
+				println!("Addition {}", item.add());
+			}
+		</code>
 	</pre>
 </section>
 
@@ -1615,375 +1986,6 @@
 	</pre>
 </section>
 
-<!----------------------------------------------------------------------------+
-| Title Slide for topic: Ownership & Borrowing                                |
-+----------------------------------------------------------------------------->
-<section>
-	<h1>Ownership & Borrowing</h1>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Ownership</h3>
-	<ul>
-		<li>Every resource has a unique <strong><a>owner</a></strong>.</li>
-		<li>The <strong>owner</strong> can change the owning value according to mutability.</li>
-		<li>Ownership can be transferred to an other variable.</li>
-		<li>Owner <em>cannot</em> free or mutate its resource while it is borrowed.</li>
-		<li>Ownership model guarantees the safeness.</li>
-	</ul>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Ownership Rules</h3>
-	<p>Each value in Rust has only <strong><a>one owner</a></strong></p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			fn main () {
-				let vector1 = vec![1, 2, 3];
-			}			   
-		</code>
-	</pre>
-	<p>here '<em>vector1</em>' is <strong><em>owner</em></strong></p>
-	<pre data-id="code-animation" style="font-size: 21px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-fn main () {
-    let vector1 = vec![1, 2, 3];
-                  ~~~~~~~~~~~~~  <---
-                                     |
-                              This memory
-                            gets `deallocated`
-}   <------------------------- here and `vector1` goes out of scope
-                          
-		</code>
-	</pre>
-	<p>Value is <strong><a>dropped</a>,</strong></p> when owner <a>goes out of scope</a>.</p>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Ownership Rules</h3>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-fn main () {
-
-  let vector1 = vec![1, 2, 3];  <--`vector1` is invalid variable
-  let vector2 = vector1;                        beacause
-      ~~~~~~~  <------------------ `vector2` is New Owner
-
-  println!("{:?}",vector1);
-}
-		</code>
-	</pre>
-
-	<pre data-id="code-animation">
-		Error:
-		<code class="hljs rust" data-trim data-line-numbers>
-error[E0382]: borrow of moved value: `vector1`
-    --> src/main.rs:4:19
-   |
-2  |   let vector1 = vec![1, 2, 3];
-   |       ------- move occurs because `vector1` has 
-   |               type `Vec< i32>`, which does not implement 
-   |               the `Copy` trait
-3  |   let vector2 = vector1;
-   |                 ------- value moved here
-4  |   println!("{:?}",vector1);
-   |                   ^^^^^^^ value borrowed here after move
-		</code>
-	</pre>
-
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Borrowing</h3>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-    let vector2 = &vector1;
-                  ^ -------------
-    someFunction(&vector1);      |---> Reference
-                 ^ --------------
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Borrowing Rules</h3>
-	<p>All references are <strong><em><a>immutable</a></em></strong></p> by default.</p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-fn main () {
-  let mut vector1 = vec![1, 2, 3];
-      ^^^  --------------------
-  let vector2 = &mut vector1;  |---> Explicitly mentioned  
-                 ^^^ ----------      as `mutable`
-                                     using `mut` keyword
-}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Borrowing Rules</h3>
-	<p>Not <strong><a>more than one</a></strong></p> 'mutable reference' is allowed in <em>a scope</em></p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-fn main () {
-   let mut _vector1 = vec![1, 2, 3];
-   let _vector2 = &mut _vector1;
-   let _vector3 = &mut _vector1;
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ---> NOT ALLOWED
-}
-		</code>
-	</pre>
-	<p>'mutable' and 'immutable' reference <strong><a>can not go hand in hand </a></strong><em>within a scope</em></p>
-
-</section>
-
-<!----------------------------------------------------------------------------+
-| Title Slide for topic: Traits in rust                                       |
-+----------------------------------------------------------------------------->
-<section>
-	<h1>Traits</h1>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Traits</h3>
-	<ul>
-		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
-		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
-	</ul>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Trait Definition</h3>
-	<ul>
-		<li>Traits are defined by the <strong>`<a>trait</a>`</strong> keyword followed by the name of the trait</li>
-		<li>While defining any trait we have to provide method signatures (method declaration)</li>
-	</ul>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			pub trait Calculator {
-				fn add(&self) -> i32;
-				fn sub(&self) -> i32;
-				fn div(&self) -> i32;
-				fn mul(&self) -> i32;
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Trait implementation</h3>
-	<ul>
-		<li><strong>`<a>impl</a>`</strong> keyword used to implement a trait</li>
-		<li><strong>`<a>for</a>`</strong> is used when implementing traits as in impl Trait for Type</li>
-	</ul>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			impl trait_name for type_name {
-				
-				//method definitions
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<p><strong>Example</strong></p>
-	<pre data-id="code-animation" style="width: 800px; height: 420px; font-size: 14px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			struct Data {
-				first_num: i32,
-				second_num: i32
-			}
-			impl Calculator for Data {
-				fn add(&self) -> i32 {
-					self.first_num + self.second_num
-				}
-				fn sub(&self) -> i32 {
-					self.first_num - self.second_num
-				}
-				fn div(&self) -> i32 {
-					self.first_num / self.second_num
-				}
-				fn mul(&self) -> i32 {
-					self.first_num * self.second_num
-				}
-			}
-			fn main() {
-				println!("Output of Add: {}", Data {first_num:2, second_num: 2}.add());
-				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
-				println!("Output of Div: {}", Data {first_num:10, second_num: 2}.div());
-				println!("Output of Mul: {}", Data {first_num:2, second_num: 2}.mul());
-			}
-		</code>
-	</pre>
-	<pre data-id="code-animation" style="width: 800px; font-size: 15px;">
-		Output: 
-		<code class="hljs rust" data-trim data-line-numbers>
-		Compiling playground v0.0.1 (/playground)
-		Finished dev [unoptimized + debuginfo] target(s) in 0.59s
-			Running `target/debug/playground`
-
-		Output of Add: 4
-		Output of Sub: 2
-		Output of Div: 5
-		Output of Mul: 4
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Default implementation of trait</h3>
-	<ul>
-		<li>Rust allows you to provide a default implementation of the Trait’s methods</li>
-		<li>A Type can keep the implementation or can override also</li>
-		<li>In the same Trait, default implementation can call another method also</li>
-	</ul>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<p><strong>Example</strong></p>
-	<pre data-id="code-animation" style="width: 800px; height: 560px; font-size: 17px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			pub trait Calculator {
-				fn add(&self) -> i32;
-				fn sub(&self) -> i32;
-				fn get_result(&self) {
-					println!("The result of Addition is {}", self.add());
-				}
-			}
-			
-			struct Data {
-				first_num: i32,
-				second_num: i32
-			}
-			
-			impl Calculator for Data {
-				fn add(&self) -> i32 {
-					self.first_num + self.second_num
-				}
-			
-				fn sub(&self) -> i32 {
-					self.first_num - self.second_num
-				}
-			}
-			
-			fn main() {
-				Data {first_num:2, second_num: 2}.get_result();
-				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Implement traits for existing types</h3>
-	<ul>
-		<li>Unlike <em>interfaces</em> in languages like Java, new traits can be implemented for existing types</li>
-		<li>For example, we can implement <strong><a>trait</a></strong> for existing types like bool, f32, etc.</li>
-	</ul>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			trait DAY {
-				fn sunday(&self) -> u64;
-			}
-			
-			impl DAY for bool {
-				fn sunday(&self) -> u64 {
-					if *self { 0 } else { 1 }
-				}
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Access Methods from the Same Trait</h3>
-	<p>We can <a>access</a> other <a>methods</a> declared <a>in the same trait</a> using `<a>self</a>`</p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			trait Calculator {
-				fn add(&self) -> u32;
-				// We can provide default method definitions.
-				fn get_result(&self) {
-					println!("Result of Add() is {}", self.add());
-				}
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Passing Trait as a Function’s Parameters</h3>
-	<p>Passing <em>trait</em> into a function’s parameter is a quite interesting concept in the traits environment so, with the help of this user can put the restriction into his functionality like only limit functions can able to use it.</p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			pub fn calculate(item: impl Calculator) {
-				println!("Addition {}", item.add());
-			}
-		</code>
-	</pre>
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Trait Bound Concept</h3>
-	<p>Trait Bound Concept is quite similar to the Passing Trait as a Function’s Parameters but with some syntactical differences.</p>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			pub fn calculate< T: Calculator> (item: T) {
-				println!("Addition {}", item.add());
-			}
-		</code>
-	</pre>
-</section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
