@@ -35,7 +35,7 @@
 			<!-- <img src="images/rust_logo.png"></img> -->
 		</div>
 		<div class="header-right">
-			<img src="images/rustacean.png"></img>
+			<a href="#/1"><img src="images/rustacean.png"></img></a>
 		</div>
 		
 		<div class="header-center">
@@ -132,11 +132,12 @@
 	<h1>Data Types</h1>
 </section>
 
+
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Variables and Mutability</h3>
+	<h3><a href="https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html">Variables and Mutability</a></h3>
 
 	<p>Variables are immutable by default</p>
 
@@ -181,7 +182,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h2 data-id="code-title">Mutability</h2>
-	<p>To fix the error add <strong>`<a>mut</a>`</strong> keyword before variable name.</p>
+	<p>To fix the error add <strong>`<a href="https://doc.rust-lang.org/std/keyword.mut.html">mut</a>`</strong> keyword before variable name.</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn main() {
@@ -212,7 +213,7 @@
 	<h2>Constants</h2>
 	<ul>
 		<li><a>Constants</a> are values that are bound to a name and are <a>not allowed to change</a></li>
-		<li><strong>`<a>const</a>`</strong> keyword is used to declare constants instead of the `let` keyword, and the type of the value must be annotated</li>
+		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.const.html">const</a>`</strong> keyword is used to declare constants instead of the `let` keyword, and the type of the value must be annotated</li>
 		<li><strong>`mut`</strong> is not used with <strong>`const`</strong></li>
 	</ul>
 </section>
@@ -265,10 +266,11 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Data Types</h2>
+	<h2><a href="https://doc.rust-lang.org/book/ch03-02-data-types.html#data-types">Data Types</a></h2>
 	<ul>
 		<li>Data type subsets: <em><a>scalar</a></em> and <em><a>compound</a></em></li>
 		<li>Rust is a <a>statically typed</a> language, which means that it <a>must know the types</a> of all variables at <a>compile time</a></li>
+		<li>Data Structures in Rust</li>
 	</ul>
 </section>
 
@@ -276,7 +278,7 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Scalar Types</h2>
+	<h2><a href="https://doc.rust-lang.org/book/ch03-02-data-types.html#scalar-types">Scalar Types</a></h2>
 	<ul>
 		<p>A scalar type represents a single value</p>
 		<ul>
@@ -382,7 +384,7 @@
 	<ul>
 		<li>Rust has two possible values: <a>true</a> and <a>false</a></li>
 		<li>Booleans are <a>one byte in size</a></li>
-		<li>It is specified using `<a>bool</a>`</li>
+		<li>It is specified using `<a href="https://doc.rust-lang.org/std/primitive.bool.html">bool</a>`</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -402,7 +404,7 @@
 <section>
 	<h2>The Character Type</h2>
 	<ul>
-		<li>Rust’s <strong>`<a>char</a>`</strong> type is the language’s most primitive alphabetic type</li>
+		<li>Rust’s <strong>`<a href="https://doc.rust-lang.org/std/primitive.char.html">char</a>`</strong> type is the language’s most primitive alphabetic type</li>
 		<li>Specify `char` literals with single quotes <a>' '</a></li>
 		<li>Rust’s `char` type is <a>four bytes in size</a> and represents a <a>unicode</a> Scalar Value, which means it can represent a lot more than just ASCII</li>
 	</ul>
@@ -424,7 +426,7 @@
 	<h2>Compound Types</h2>
 	<ul>
 		<li>Compound types can group multiple values into one type</li>
-		<li>Rust has two primitive compound types: <strong><a>tuples</a></strong> and <strong><a>arrays</a></strong></li>
+		<li>Rust has two primitive compound types: <strong><a href="https://doc.rust-lang.org/std/primitive.tuple.html">tuples</a></strong> and <strong><a href="https://doc.rust-lang.org/std/primitive.array.html">arrays</a></strong></li>
 	</ul>
 </section>
 
@@ -573,7 +575,7 @@
 <section>
 	<h2>Defining a Struct</h2>
 	<ul>
-		<li>The <strong>`<a>struct</a>`</strong> keyword is used to declare a structure followed by the name</li>
+		<li>The <strong>`<a href="https://doc.rust-lang.org/std/keyword.struct.html">struct</a>`</strong> keyword is used to declare a structure followed by the name</li>
 		<li>Inside curly brackets, we define the names and types of the pieces of data, which we call <strong>'fields'</strong></li>
 	</ul>
 	<pre data-id="code-animation">
@@ -620,7 +622,7 @@
 <section>
 	<h2>Enums</h2>
 	<ul style="font-size: 34px;">
-		<li>The <strong>`<a>enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a>.</li>
+		<li>The <strong>`<a href="https://doc.rust-lang.org/std/keyword.enum.html">enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a>.</li>
 		<li>Any variant which is valid as a struct is also valid as an enum</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 16px;">
@@ -676,7 +678,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Define a Function in Rust</h3>
-	<p>Function is a <a>reusable</a> block of code, in Rust <strong>`<a>fn</a>`</strong> keyword is used to define a function.</p>
+	<p>Function is a <a>reusable</a> block of code, in Rust <strong>`<a href="https://doc.rust-lang.org/std/keyword.fn.html">fn</a>`</strong> keyword is used to define a function.</p>
 	<pre data-id="code-animation"> 
 		<code class="hljs rust" data-trim data-line-numbers>
 			//define a function
@@ -751,7 +753,7 @@
 	<h3>Function with Return Value</h3>
 	<ul style="font-size: 38px;">
 		<li>`<a><strong>-></strong></a>` syntax is used to specify the return type</li>
-		<li>possible to return a <a>without</a> explicitly using the `<a><strong>return</strong></a>` keyword</li>
+		<li>possible to return a <a>without</a> explicitly using the `<a href="https://doc.rust-lang.org/std/keyword.return.html"><strong>return</strong></a>` keyword</li>
 		<li>the <a>last expression</a> is returned as the result of function</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 19px;">
@@ -778,11 +780,11 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Generic Functions</h2>
-	<p style="font-size: 32px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (<  >) after the function name.</p>
+	<p style="font-size: 32px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
 	<pre data-id="code-animation" style="font-size: 19px;">
-		Example:
+		Example: 
 		<code class="hljs rust" data-trim data-line-numbers>
-			fn min <T: PartialOrd> (a: T, b: T) -> T {
+			fn min< T:PartialOrd > (a: T, b: T) -> T {
 				if a < b {
 					a
 				} else {
@@ -797,6 +799,7 @@
 			}
 		</code>
 	</pre>
+	<a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html">PartialOrd</a>
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -835,7 +838,7 @@
 	<h3>Methods that access data</h3>
 	<ul style="font-size: 32px;">
 		<li>'new': a constructor that creates a new instance of the Rectangle struct.</li>
-		<li>'area': a method that calculates the area of the Rectangle and uses <strong>`<a>&self</a>`</strong> to access the data</li>
+		<li>'area': a method that calculates the area of the Rectangle and uses <strong>`<a href="https://doc.rust-lang.org/std/keyword.self.html">&self</a>`</strong> to access the data</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 18px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -863,7 +866,7 @@
 <section>
 	<h2>Closures</h2>
 	<ul>
-		<li>Closure is an anonymous function that can capture values from the enclosing environment and defined using the `<strong><a>||</a></strong>` characters.</small></li>
+		<li><a href="https://doc.rust-lang.org/book/ch13-01-closures.html">Closure</a> is an anonymous function that can capture values from the enclosing environment and defined using the `<strong><a>||</a></strong>` characters.</small></li>
 		<li>Optional body delimination `{ }` for a single expression (mandatory otherwise).</li>
 	</ul>
 	
@@ -925,8 +928,8 @@
 	<h2>Strings</h2>
 	<p>There are two types of strings in Rust</p>
 	<ul>
-		<li>String</li>
-		<li>&str</li>
+		<li><a href="https://doc.rust-lang.org/std/string/struct.String.html">String</a></li>
+		<li><a href="https://doc.rust-lang.org/std/primitive.str.html">&str</a></li>
 	</ul>
 </section>
 
@@ -955,7 +958,7 @@
 
 <section>
 	<h2>Deref and String</h2>
-	<p>String implements <a>Deref</a> trait, which means that you can pass a <a>&String</a> to something expecting a &str, and it will Just Work:</p>
+	<p>String implements <a href="https://doc.rust-lang.org/std/ops/trait.Deref.html">Deref</a> trait, which means that you can pass a <a href="https://doc.rust-lang.org/std/string/struct.String.html">&String</a> to something expecting a &str, and it will Just Work:</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn accepts_str(s: &str) {
@@ -979,7 +982,7 @@
 		<li>An immutable reference to a valid UTF-8 sequence.</li>
 		<li>May be anywhere, on the heap, stack, or in program memory.</li>
 		<li>Only seen as a borrowed value.</li>
-		<li>Has a fixed size, the value is known at compile time</li>
+		<li>Has a fixed size, the value is known at run time</li>
 	</ul>
 	<!-- <pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1022,6 +1025,42 @@
 	</pre>
 </section>
 
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h2>Memory Allocation</h2>
+	<img data-src="images/strings_memory_allocation.png">
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Operations on Strings</h3>
+	<small>concatenation | appending | slicing | splitting | replacing | iterating | checking starts prefix | checkin ends suffix</small>
+	<pre data-id="code-animation" style="height: 420px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			let s1 = String::from("hello world");
+			let mut s2 = String::from("rust is awesome");
+
+			let s3 = s1 + &s2;             // Concat using the `+` operator
+			let s4 = format!("{}{}",s1,s2);// Concat using the format! macro
+			s2.push_str(", & memory safe");// Appending using the push_str
+			let slice = &s[0..2];          // Slicing using string indices
+
+			for c in "hello".chars() {     // Iterating over the string
+				println!("{}", c);
+			}
+			println!("Length:{}", s.len());// Finding the length of a string
+			if(s1.starts_with("he")){}     // Check if starts with a prefix
+			if(s1.ends_with("ld")){}       // Check if ends with a suffix
+		</code>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rust-tutorials-l2o26r?file=%2Fexample%2Fsplit.rs')"> examples in online editor</p> -->
+		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rust-tutorials-bwh2qz?file=%2Fexamples%2Fsplit.rs')"> in online editor</p>
+	</pre>
+</section>
+
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Ownership & Borrowing                                |
@@ -1034,7 +1073,7 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Ownership</h3>
+	<h3><a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html">Ownership</a></h3>
 	<ul>
 		<li>Every resource has a unique <strong><a>owner</a></strong>.</li>
 		<li>The <strong>owner</strong> can change the owning value according to mutability.</li>
@@ -1114,7 +1153,7 @@ error[E0382]: borrow of moved value: `vector1`
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Borrowing</h3>
+	<h3><a href="https://doc.rust-lang.org/rust-by-example/scope/borrow.html">Borrowing</a></h3>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
     let vector2 = &vector1;
@@ -1175,7 +1214,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Traits</h3>
+	<h3><a href="https://doc.rust-lang.org/std/keyword.trait.html">Traits</a></h3>
 	<ul>
 		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
 		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
@@ -1188,7 +1227,7 @@ fn main () {
 <section>
 	<h3>Trait Definition</h3>
 	<ul>
-		<li>Traits are defined by the <strong>`<a>trait</a>`</strong> keyword followed by the name of the trait</li>
+		<li>Traits are defined by the <strong>`<a href="https://doc.rust-lang.org/std/keyword.trait.html">trait</a>`</strong> keyword followed by the name of the trait</li>
 		<li>While defining any trait we have to provide method signatures (method declaration)</li>
 	</ul>
 	<pre data-id="code-animation">
@@ -1209,8 +1248,8 @@ fn main () {
 <section>
 	<h3>Trait implementation</h3>
 	<ul>
-		<li><strong>`<a>impl</a>`</strong> keyword used to implement a trait</li>
-		<li><strong>`<a>for</a>`</strong> is used when implementing traits as in impl Trait for Type</li>
+		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.impl.html">impl</a>`</strong> keyword used to implement a trait</li>
+		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.for.html">for</a>`</strong> is used when implementing traits as in impl Trait for Type</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1393,41 +1432,6 @@ fn main () {
 	</pre>
 </section>
 
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h2>Memory Allocation</h2>
-	<img data-src="images/strings_memory_allocation.png">
-</section>
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>Operations on Strings</h3>
-	<small>concatenation | appending | slicing | splitting | replacing | iterating | checking starts prefix | checkin ends suffix</small>
-	<pre data-id="code-animation" style="height: 420px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			let s1 = String::from("hello world");
-			let mut s2 = String::from("rust is awesome");
-
-			let s3 = s1 + &s2;             // Concat using the `+` operator
-			let s4 = format!("{}{}",s1,s2);// Concat using the format! macro
-			s2.push_str(", & memory safe");// Appending using the push_str
-			let slice = &s[0..2];          // Slicing using string indices
-
-			for c in "hello".chars() {     // Iterating over the string
-				println!("{}", c);
-			}
-			println!("Length:{}", s.len());// Finding the length of a string
-			if(s1.starts_with("he")){}     // Check if starts with a prefix
-			if(s1.ends_with("ld")){}       // Check if ends with a suffix
-		</code>
-		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rust-tutorials-l2o26r?file=%2Fexample%2Fsplit.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rust-tutorials-bwh2qz?file=%2Fexamples%2Fsplit.rs')"> in online editor</p>
-	</pre>
-</section>
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Memory management in rust                            |
@@ -1560,7 +1564,7 @@ fn main () {
 	<h2>Smart Pointers</h2>
 	<ul style="font-size: 36px;">
 		<li>A <a>pointer</a> is a general concept for a variable that <a>contains an address in memory</a>.</li>
-		<li>Smart pointers implement the `<a>Deref</a>` and `<a>Drop</a>` traits.</li>
+		<li>Smart pointers implement the `<a href="https://doc.rust-lang.org/std/ops/trait.Deref.html">Deref</a>` and `<a href="https://doc.rust-lang.org/std/ops/trait.Drop.html">Drop</a>` traits.</li>
 		<ul>
 			<li>The Deref trait allows an instance of the smart pointer struct to behave like a reference so you can write your code to work with either references or smart pointers.</li>
 			<li>The Drop trait allows you to customize the code that’s run when an instance of the smart pointer goes out of scope.</li>
@@ -1574,9 +1578,9 @@ fn main () {
 <section>
 	<h3>Smart pointers in the standard library</h3>
 	<ul style="font-size: 38px;">
-		<li><a>Box< T ></a> for allocating values on the heap</li>
-		<li><a>Rc< T ></a>, a reference counting type that enables multiple ownership</li>
-		<li><a>Ref< T ></a> and <a>RefMut< T ></a>, accessed through <a>RefCell< T ></a>, a type that enforces the borrowing rules at runtime instead of compile time</li>
+		<li><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html">Box< T ></a> for allocating values on the heap</li>
+		<li><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html">Rc< T ></a>, a reference counting type that enables multiple ownership</li>
+		<li><a href="https://doc.rust-lang.org/std/cell/struct.Ref.html">Ref< T ></a> and <a href="https://doc.rust-lang.org/std/cell/struct.RefMut.html">RefMut< T ></a>, accessed through <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html">RefCell< T ></a>, a type that enforces the borrowing rules at runtime instead of compile time</li>
 	</ul>
 </section>
 
@@ -1584,7 +1588,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Box< T ></h3>
+	<h3><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html">Box< T ></a></h3>
 	<ul>
 		<li>Boxes allow you to store data on the heap rather than the stack. What remains on the stack is the pointer to the heap data.</li>
 		<li>Box< T > allows immutable or mutable borrows checked at compile time</li>
@@ -1603,7 +1607,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Rc< T ></h3>
+	<h3><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html">Rc< T ></a></h3>
 	<ul style="font-size: 32px;">
 		<li>To enable multiple ownership explicitly by using the Rust type Rc<T>, which is an abbreviation for reference counting.</li>
 		<li>The Rc<T> type keeps track of the number of references to a value to determine whether or not the value is still in use</li>
@@ -1621,7 +1625,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>RefCell< T ></h3>
+	<h3><a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html">RefCell< T ></a></h3>
 	<ul style="font-size: 32px;">
 		<li>Rc< T >, the RefCell< T > type represents single ownership over the data it holds.</li>
 		<li>At any given time, you can have either (but not both) one mutable reference or any number of immutable references.</li>
@@ -1718,7 +1722,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>match</h3>
+	<h3><a href="https://doc.rust-lang.org/std/keyword.match.html">match</a></h3>
 	<ul style="font-size: 33px;">
 		<li>Rust provides pattern matching with the match keyword</li>
 		<li>A scrutinee expression is provided to compare to the patterns.</li>
@@ -1777,7 +1781,7 @@ fn main () {
 	<h3>loop</h3>
 	<ul>
 		<li>Used to execute over block of code <a><strong><em>forever</em></strong></a>, Or until it is stopped, or the program quits.</li>
-		<li>Instead of having this <strong>`<a>loop</a>`</strong> infinitely the <strong>`<a>break</a>`</strong> keyword can be used.</li>
+		<li>Instead of having this <strong>`<a href="https://doc.rust-lang.org/std/keyword.loop.html">loop</a>`</strong> infinitely the <strong>`<a href="https://doc.rust-lang.org/std/keyword.break.html">break</a>`</strong> keyword can be used.</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1799,7 +1803,7 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>while</h3>
+	<h3><a href="https://doc.rust-lang.org/std/keyword.while.html">while</a></h3>
 	<ul>
 		<li>Conditional loops</li>
 		<li>Run until the condition is met or become false</li>
@@ -1859,7 +1863,7 @@ fn main () {
 	<h3>iterators</h3>
 	<ul>
 		<li>In Rust, iterators help us achieve the process of looping.</li>
-		<li>Using the <a><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
+		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1879,8 +1883,8 @@ fn main () {
 <section>
 	<h3>iterator trait</h3>
 	<ul>
-		<li>In Rust, all iterators implement a trait named '<a>iterator</a>' that has a method called <a><strong><em>next()</em></strong></a></li>
-		<li>Using the <a><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
+		<li>In Rust, all iterators implement a trait named '<a href="https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html">iterator</a>' that has a method called <a><strong><em>next()</em></strong></a></li>
+		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2002,7 +2006,7 @@ fn main () {
 		</code>
 	</pre>
 
-	<p style="font-size: 36px;"><strong>`<a>where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
+	<p style="font-size: 36px;"><strong>`<a href="https://doc.rust-lang.org/std/keyword.where.html">where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
 	<pre data-id="code-animation" style="font-size: 19px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			/// without where clause
@@ -2050,7 +2054,7 @@ fn main () {
 <section>
 	<h2>Unrecoverable Errors</h2>
 	<p>Unrecoverable errors are symptoms of bugs</p>
-	<p><strong><a>panic!</a></strong> macro is a simplest way of handling errors</p>
+	<p><strong><a href="https://doc.rust-lang.org/std/macro.panic.html">panic!</a></strong> macro is a simplest way of handling errors</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 		fn main() {
@@ -2084,13 +2088,13 @@ fn main () {
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Recoverable Errors</h3>
-	<p>Use of <strong><a>Option</a></strong> enum</p>
+	<p>Use of <strong><a href="https://doc.rust-lang.org/std/option/enum.Option.html">Option</a></strong> enum</p>
 	<p>Most errors aren’t serious enough that require a program to stop entirely</p>
 	<aside class="notes">
 		For example you try to open a file and that operation fails because the file doesn’t exist, you might want to create the file instead of terminating the process
 	</aside>
 	<!-- <p><small>For example you try to open a file and that operation fails because the file doesn’t exist, you might want to create the file instead of terminating the process</small></p> -->
-	<p><strong><a>Option < T > </a></strong> enum is useful to handle non-existing values</p>
+	<p><strong><a href="https://doc.rust-lang.org/std/option/enum.Option.html">Option < T > </a></strong> enum is useful to handle non-existing values</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 		fn main(){
@@ -2110,7 +2114,7 @@ fn main () {
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Recoverable Errors</h2>
-	<p>Use of <strong><a>Result </a></strong> enum</p>
+	<p>Use of <strong><a href="https://doc.rust-lang.org/std/result/enum.Result.html">Result </a></strong> enum</p>
 	<p>Result type enum is used for most common errors, when a operation is expected to work but does not.</p>
 	<!-- <p><small>For example you try to open a file and that operation fails because the file doesn’t exist, you might want to create the file instead of terminating the process</small></p> -->
 	<p><strong><a>Result  < T, E > </a></strong> enum is well suited when problems are expected.</p>
@@ -2133,7 +2137,7 @@ fn main () {
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Helper Functions of Result Type</h2>
-	<p>`<a>unwrap</a>`</p>
+	<p>`<a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap">unwrap</a>`</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 		use std::fs::File;
@@ -2142,7 +2146,7 @@ fn main () {
 		}
 		</code>
 	</pre>
-	<p>`<a>expect</a>`</p>
+	<p>`<a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.expect">expect</a>`</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 use std::fs::File;
@@ -2228,7 +2232,7 @@ use std::fs::File;
 	<ul>
 		<li><a>Message-passing</a> concurrency, where <em>'channels'</em> <a>send messages</a> between <strong>threads</strong> </li>
 		<li><a>Shared-state</a> concurrency, where multiple between <strong>threads</strong> have <a>access to same piece of data</a></li>
-		<li>The <em><a>Sync</a></em> and <em><a>Send</a></em> traits, which extend Rust’s concurrency guarantees to user-defined types as well as types provided by the standard library</li>
+		<li>The <em><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html">Sync</a></em> and <em><a href="https://doc.rust-lang.org/std/marker/trait.Send.html">Send</a></em> traits, which extend Rust’s concurrency guarantees to user-defined types as well as types provided by the standard library</li>
 		<li>To create threads to run multiple pieces of code at the same time</li>
 	</ul>
 </section>
@@ -2336,9 +2340,9 @@ use std::fs::File;
 <section>
 	<h2>Send and Sync Traits</h2>
 	<ul style="font-size: 34px;">
-		<li>The <strong><a>`Send` marker</a></strong> trait indicates that <a>ownership</a> of values of the type can be <a>transferred</a> between threads.</li>
-		<li>The <strong><a>`Sync` marker</a></strong> trait indicates that ae type is safe to be <a>shared</a> between threads.</li>
-		<li>Any type <strong><a>< T ></a></strong> is <strong><a>Sync</a></strong> if <strong><a>&T</a></strong> is <strong><a>Send</a></strong>, meaning the immutable reference can be sent safely to another thread.</li>
+		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html">`Send` marker</a></strong> trait indicates that <a>ownership</a> of values of the type can be <a>transferred</a> between threads.</li>
+		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html">`Sync` marker</a></strong> trait indicates that ae type is safe to be <a>shared</a> between threads.</li>
+		<li>Any type <strong><a>< T ></a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html">Sync</a></strong> if <strong><a>&T</a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html">Send</a></strong>, meaning the immutable reference can be sent safely to another thread.</li>
 		<li>Similar to Send, primitive types are Sync, and types composed entirely of types that are Sync are also Sync.</li>
 	</ul>
 </section>
@@ -2434,10 +2438,10 @@ use std::fs::File;
 		<li>Built-in tool in rust programming for writing asynchronous functions.</li>
 		<br>
 		<ul style="font-size: 34px;">
-			<li><a>async</a>
+			<li><a href="https://doc.rust-lang.org/std/keyword.async.html">async</a>
 				<P>Transforms a block of code into a state machine that <a>implements</a> a trait called <strong>'<a>future</a>'</strong>.</P>
 			</li>
-			<li><a>await</a>
+			<li><a href="https://doc.rust-lang.org/std/keyword.await.html">await</a>
 				<ul>
 					<li>Mechanism to run a future</li>
 					<li>It asynchronously waits for the future to complete.</li>
