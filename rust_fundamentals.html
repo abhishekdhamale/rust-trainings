@@ -551,7 +551,7 @@
 			}							 
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rusttrainingexamples-forked-lzz4h8?file=%2Fexamples%2Ftypeerror.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -572,7 +572,7 @@
 			}
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/elegant-curie-w3wxp4?file=%2Fexamples%2Farrayindexing.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -662,7 +662,69 @@
 			}
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/enum-4r0rw0?file=%2Fexamples%2Fenum1.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/enum-4r0rw0?file=%2Fexamples%2Fenum1.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/enum-4r0rw0?file=%2Fexamples%2Fenum1.rs')"> in online editor</p> -->
+	</pre>
+</section>
+
+
+<section>
+	<h3><a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank">Lifetimes</a></h3>
+	<ul style="font-size: 28px;">
+		<li>It represents scope in which a reference is valid.</li>
+		<li>It ensures that references do not outlive the data they refer to. </li>
+		<li>By analyzing the lifetimes, the compiler can enforce memory safety.</li>
+		<li>Lifetimes are denoted by apostrophes ('), also known as "ticks." </li>
+		<li>Often used in function signatures, struct definitions, and generic type parameters to specify the relationship between references.</li>
+	</ul>
+	<pre data-id="code-animation" style="font-size: 18px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn longest_string<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+				if s1.len() > s2.len() {
+					s1
+				} else {
+					s2
+				}
+			}
+			
+			fn main() {
+				let s1 = "Hello";
+				let s2 = "World";
+				let result = longest_string(s1, s2);
+				println!("Longest string: {}", result);
+			}
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>Visibility Modifiers</h3>
+	<ul style="font-size: 29px;">
+		<li>It control the accessibility of structs, enums, functions, methods, and modules</li>
+		<li>Rust provides three visibility modifiers:</li>
+		<ul>
+			<li><a href="https://doc.rust-lang.org/reference/visibility-and-privacy.html?highlight=pub#visibility-and-privacy" target="_blank">`pub`</a>: accessible from other modules or crates</li>
+			<li><a>`pub(crate)`</a>: accessible only within the same crate</li>
+			<li><a>`pub(in path)`</a>: accessible only within the specified module path and its submodules.</li>
+		</ul>
+	</ul>
+	<pre data-id="code-animation" style="font-size: 14px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			mod my_module {
+				pub struct PublicStruct { } 
+				struct PrivateStruct { }
+				pub fn public_function() { }
+				fn private_function() { }
+				pub(crate) fn crate_function() { }
+				pub(in crate::my_module::nested) fn restricted_function() {
+			}
+			
+			fn main() {
+				let public_struct = my_module::PublicStruct {};
+				my_module::public_function();
+				// let private_struct = my_module::PrivateStruct {}; // Error: not accessible here
+				// my_module::private_function(); 									// Error: not accessible here
+			}
+		</code>
 	</pre>
 </section>
 
@@ -738,7 +800,7 @@
         greet(); -------------------^
     }
 		</code>
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/05lq3j?file=%2Fsrc%2Fmain.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/05lq3j?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
 	</pre>
 	
 </section>
@@ -783,7 +845,7 @@
 			
 			fn return_bool() -> bool {
 				//code
-				retun true;
+				return true;
 			}
 
 			fn multiply(float: f64, integer: i64) -> f64 {
@@ -801,7 +863,7 @@
 	<h2>Generic Functions</h2>
 	<p style="font-size: 32px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
 	<pre data-id="code-animation" style="font-size: 19px;">
-		Example: 
+		Example using <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html" target="_blank">PartialOrd</a> trait:
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn min< T:PartialOrd > (a: T, b: T) -> T {
 				if a < b {
@@ -815,10 +877,14 @@
 				let x = min(5, 10);              // integer
 				let y = min(5.0, 10.0);          // float
 				let z = min("hello", "world");   // string
+				
+				println!("x: {x}");
+				println!("y: {y}");
+				println!("z: {z}");
 			}
 		</code>
 	</pre>
-	<a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html">PartialOrd</a>
+	
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -1048,8 +1114,14 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Memory Allocation</h2>
-	<img data-src="images/strings_memory_allocation.png">
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			let s: String = String::from("hello world");
+
+			let world: &str = &s[6..11];
+		</code>
+	</pre>
+	<img style="height: 500px;" data-src="images/string&str.svg">
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -1076,7 +1148,7 @@
 			if(s1.ends_with("ld")){}       // Check if ends with a suffix
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/rust-tutorials-l2o26r?file=%2Fexample%2Fsplit.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rust-tutorials-bwh2qz?file=%2Fexamples%2Fsplit.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/rust-tutorials-bwh2qz?file=%2Fexamples%2Fsplit.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -1383,20 +1455,25 @@ fn main () {
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Implement traits for existing types</h3>
-	<ul>
+	<ul style="font-size: 36px;"">
 		<li>Unlike <em>interfaces</em> in languages like Java, new traits can be implemented for existing types</li>
-		<li>For example, we can implement <strong><a>trait</a></strong> for existing types like bool, f32, etc.</li>
+		<li>For example, we can implement <strong><a>trait</a></strong> for existing types like bool, f32, i32, etc.</li>
 	</ul>
-	<pre data-id="code-animation">
+	<pre data-id="code-animation" style="font-size: 18px;">
 		<code class="hljs rust" data-trim data-line-numbers>
-			trait DAY {
-				fn sunday(&self) -> u64;
+			trait PrintInfo {						//Define a trait called `PrintInfo`
+				fn print_info(&self);	
 			}
 			
-			impl DAY for bool {
-				fn sunday(&self) -> u64 {
-					if *self { 0 } else { 1 }
+			impl PrintInfo for i32 {		// Implement `PrintInfo` for the built-in type `i32`
+				fn print_info(&self) {
+					println!("This is an integer: {}", self);
 				}
+			}
+			
+			fn main() {
+				let num: i32 = 42;
+				num.print_info(); 				// Output: "This is an integer: 42"
 			}
 		</code>
 	</pre>
@@ -1789,7 +1866,7 @@ fn main () {
 			}							 
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2005,7 +2082,7 @@ fn main () {
 			}	   
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/iterator-forked-2pxyb0?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2081,7 +2158,7 @@ fn main () {
 		}
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fpanic1.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fpanic1.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fpanic1.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2124,7 +2201,7 @@ fn main () {
 		}
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2FOption1.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2FOption1.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2FOption1.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2147,7 +2224,7 @@ fn main () {
 		}
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2175,7 +2252,7 @@ use std::fs::File;
 }
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fresult1.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2208,7 +2285,7 @@ use std::fs::File;
     }
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fquestionmark.rs')"> examples in online editor</p> -->
-		<p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fquestionmark.rs')"> in online editor</p>
+		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/error-handling-clprht?file=%2Fexamples%2Fquestionmark.rs')"> in online editor</p> -->
 	</pre>
 </section>
 
@@ -2289,7 +2366,7 @@ use std::fs::File;
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Creating a New Thread</h3>
+	<h3>Creating a New Channel</h3>
 	<ul style="font-size: 32px;">
 		<li><strong><a>Channel</a></strong> has two haves: <strong><a>transmitter</a></strong> and <strong><a>receiver</a></strong></li>
 		<li>One thread uses transmitter to <strong><a>send</a></strong> data on the channel.</li>
@@ -2360,7 +2437,7 @@ use std::fs::File;
 	<h2>Send and Sync Traits</h2>
 	<ul style="font-size: 34px;">
 		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">`Send` marker</a></strong> trait indicates that <a>ownership</a> of values of the type can be <a>transferred</a> between threads.</li>
-		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">`Sync` marker</a></strong> trait indicates that ae type is safe to be <a>shared</a> between threads.</li>
+		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">`Sync` marker</a></strong> trait indicates that it is safe to be <a>shared</a> between threads.</li>
 		<li>Any type <strong><a>< T ></a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">Sync</a></strong> if <strong><a>&T</a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">Send</a></strong>, meaning the immutable reference can be sent safely to another thread.</li>
 		<li>Similar to Send, primitive types are Sync, and types composed entirely of types that are Sync are also Sync.</li>
 	</ul>
@@ -2539,6 +2616,24 @@ use std::fs::File;
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
+
+<section>
+	<h3>State Machine Transformation</h3>
+	<pre data-id="code-animation" style="font-size: 21px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			async fn example(min_len: usize) -> String {
+				let content = async_read_file("foo.txt").await;
+				if content.len() < min_len {
+					content + &async_read_file("bar.txt").await
+				} else {
+					content
+				}
+			}
+		</code>
+	</pre>
+</section>
+
+
 <section>
 	<h3>State Machine Transformation</h3>
 	<img data-src="images/state_machine.png">
@@ -2571,6 +2666,9 @@ use std::fs::File;
 	<img src="images/rustacean.gif"></img>
 	<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/s/2464zp59y')"> Open Editor</p> -->
 </section>
+
+
+
 <!----------------------------------------------------------------------------+
 |        ************* CODE FOR SLIDES DECK ENDS HERE  *************          |
 +----------------------------------------------------------------------------->
