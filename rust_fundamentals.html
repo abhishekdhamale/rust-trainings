@@ -83,11 +83,11 @@
 		<li><a href="#/41">Strings</a></li>
 		<li><a href="#/49">Ownership</a></li>
 		<li><a href="#/56">Traits</a></li>
-		<li><a href="#/67">Memory Management</a></li>
-		<li><a href="#/90">Control Flow</a></li>
-		<li><a href="#/105">Error Handling</a></li>
-		<li><a href="#/114">Concurrency</a></li>
-		<li><a href="#/122">Async and Await</a></li>
+		<li><a href="#/69">Memory Management</a></li>
+		<li><a href="#/92">Control Flow</a></li>
+		<li><a href="#/107">Error Handling</a></li>
+		<li><a href="#/116">Concurrency</a></li>
+		<li><a href="#/124">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -242,15 +242,26 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Constants</h2>
-	<ul>
+	<ul style="font-size: 31px;">
 		<li>Constants can be <a>declared in any scope</a>, including the global scope</li>
 		<li>Constants may be set only to a constant expression, not the result of a value that could only be computed at runtime</li>
 	</ul>
-	<pre data-id="code-animation">
+	<pre data-id="code-animation" style="font-size: 19px;">
 		<code class="hljs rust" data-trim data-line-numbers>
-			fn main() {
-				const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-			}					 
+			struct Circle {
+				radius: f64,
+			}
+
+			impl Circle {
+				const PI: f64 = 3.14159;
+			
+				fn new(radius: f64) -> Circle {
+					Circle { radius }
+				}
+				fn calculate_area(&self) -> f64 {
+					Circle::PI * self.radius * self.radius
+				}
+			}		 
 		</code>
 	</pre>
 </section>
@@ -663,68 +674,6 @@
 		</code>
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/enum-4r0rw0?file=%2Fexamples%2Fenum1.rs')"> in online editor</p> -->
 		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/enum-4r0rw0?file=%2Fexamples%2Fenum1.rs')"> in online editor</p> -->
-	</pre>
-</section>
-
-
-<section>
-	<h3><a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank">Lifetimes</a></h3>
-	<ul style="font-size: 28px;">
-		<li>It represents scope in which a reference is valid.</li>
-		<li>It ensures that references do not outlive the data they refer to. </li>
-		<li>By analyzing the lifetimes, the compiler can enforce memory safety.</li>
-		<li>Lifetimes are denoted by apostrophes ('), also known as "ticks." </li>
-		<li>Often used in function signatures, struct definitions, and generic type parameters to specify the relationship between references.</li>
-	</ul>
-	<pre data-id="code-animation" style="font-size: 18px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			fn longest_string<'a>(s1: &'a str, s2: &'a str) -> &'a str {
-				if s1.len() > s2.len() {
-					s1
-				} else {
-					s2
-				}
-			}
-			
-			fn main() {
-				let s1 = "Hello";
-				let s2 = "World";
-				let result = longest_string(s1, s2);
-				println!("Longest string: {}", result);
-			}
-		</code>
-	</pre>
-</section>
-
-<section>
-	<h3>Visibility Modifiers</h3>
-	<ul style="font-size: 29px;">
-		<li>It control the accessibility of structs, enums, functions, methods, and modules</li>
-		<li>Rust provides three visibility modifiers:</li>
-		<ul>
-			<li><a href="https://doc.rust-lang.org/reference/visibility-and-privacy.html?highlight=pub#visibility-and-privacy" target="_blank">`pub`</a>: accessible from other modules or crates</li>
-			<li><a>`pub(crate)`</a>: accessible only within the same crate</li>
-			<li><a>`pub(in path)`</a>: accessible only within the specified module path and its submodules.</li>
-		</ul>
-	</ul>
-	<pre data-id="code-animation" style="font-size: 14px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			mod my_module {
-				pub struct PublicStruct { } 
-				struct PrivateStruct { }
-				pub fn public_function() { }
-				fn private_function() { }
-				pub(crate) fn crate_function() { }
-				pub(in crate::my_module::nested) fn restricted_function() {
-			}
-			
-			fn main() {
-				let public_struct = my_module::PublicStruct {};
-				my_module::public_function();
-				// let private_struct = my_module::PrivateStruct {}; // Error: not accessible here
-				// my_module::private_function(); 									// Error: not accessible here
-			}
-		</code>
 	</pre>
 </section>
 
@@ -1527,6 +1476,70 @@ fn main () {
 		</code>
 	</pre>
 </section>
+
+
+<section>
+	<h3><a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank">Lifetimes</a></h3>
+	<ul style="font-size: 28px;">
+		<li>It represents scope in which a reference is valid.</li>
+		<li>It ensures that references do not outlive the data they refer to. </li>
+		<li>By analyzing the lifetimes, the compiler can enforce memory safety.</li>
+		<li>Lifetimes are denoted by apostrophes ('), also known as "ticks." </li>
+		<li>Often used in function signatures, struct definitions, and generic type parameters to specify the relationship between references.</li>
+	</ul>
+	<pre data-id="code-animation" style="font-size: 18px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn longest_string<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+				if s1.len() > s2.len() {
+					s1
+				} else {
+					s2
+				}
+			}
+			
+			fn main() {
+				let s1 = "Hello";
+				let s2 = "World";
+				let result = longest_string(s1, s2);
+				println!("Longest string: {}", result);
+			}
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>Visibility Modifiers</h3>
+	<ul style="font-size: 29px;">
+		<li>It control the accessibility of structs, enums, functions, methods, and modules</li>
+		<li>Rust provides three visibility modifiers:</li>
+		<ul>
+			<li><a href="https://doc.rust-lang.org/reference/visibility-and-privacy.html?highlight=pub#visibility-and-privacy" target="_blank">`pub`</a>: accessible from other modules or crates</li>
+			<li><a>`pub(crate)`</a>: accessible only within the same crate</li>
+			<li><a>`pub(in path)`</a>: accessible only within the specified module path and its submodules.</li>
+		</ul>
+	</ul>
+	<pre data-id="code-animation" style="font-size: 14px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			mod my_module {
+				pub struct PublicStruct { } 
+				struct PrivateStruct { }
+				pub fn public_function() { }
+				fn private_function() { }
+				pub(crate) fn crate_function() { }
+				pub(in crate::my_module::nested) fn restricted_function() {
+			}
+			
+			fn main() {
+				let public_struct = my_module::PublicStruct {};
+				my_module::public_function();
+				// let private_struct = my_module::PrivateStruct {}; // Error: not accessible here
+				// my_module::private_function(); 									// Error: not accessible here
+			}
+		</code>
+	</pre>
+</section>
+
 
 
 <!----------------------------------------------------------------------------+
