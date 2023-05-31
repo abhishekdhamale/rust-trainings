@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>rust-fundamentals</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/night.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+	<div id="EditorDiv" hidden>
+		<!-- <button onclick="CloseEditor()">Back to Presentation</button> -->
+		<iframe
+			id="EditorFrame"
+			style="width:100%; height:780px; border:0; border-radius: 4px; overflow:hidden; align-items: center; margin-top: 70px;"
+			sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock"
+		></iframe>
+		<!-- <embed src="https://codesandbox.io/embed/new?codemirror=1"
+		id="EditorFrame"
+		width=1200
+		height=800
+		onerror="alert('URL invalid !!');" /> -->
+	</div>
+<div class="reveal">
+
+	<div id="static-elements">
+		<div class="header-left">
+			<!-- <img src="images/rust_logo.png"></img> -->
+		</div>
+		<div class="header-right">
+			<a href="#/1"><img src="images/rustacean.png"></img></a>
+		</div>
+		
+		<div class="header-center">
+			<!-- <div class="slide-chapter"></div> -->
+			<button id="BackToPresentation" class="BackBtn" onclick="CloseEditor()"><< Back to Presentation</button>
+		</div>
+		<div class="footer-center">
+			<!-- <div class="slide-title">test</div> -->
+		</div>
+
+		<div class="footer-left">
+			<footnote><text id="slide-number"></text></footnote>
+		</div>
+
+		<!-- <div class="footer-right">
+		</div> -->
+	</div>
+
+
+
+	<div class="slides" id="SlidesDiv">
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK STARTS HERE  *************        |
++----------------------------------------------------------------------------->
+
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section class="r-fit-text">
+	<img src="images/rust_logo.png" style="height: 100px;"></img>
+	<h2>Web Development in Rust</h2>
+</section>
+
+
+<!----------------------------------------------------------------------------+
+|  Topics: List of topics being covered in this presentation                  |
++----------------------------------------------------------------------------->
+<section>
+	<h2>Topics</h2>
+	<ul style="font-size: 32px;">
+		<li><a href="#/1">Getting started for Web Development</a></li>
+		<li><a href="#/1">Frontend</a></li>
+		<li><a href="#/1">Templating</a></li>
+		<li><a href="#/1">Web API</a></li>
+		<li><a href="#/1">Backend</a></li>
+		<li><a href="#/1">Web Frameworks and Libraries</a></li>
+		<li><a href="#/1">WebAssembly</a></li>
+		<li><a href="#/1">Simple Web-Server</a></li>
+		<li><a href="#/1">Demo</a></li>
+	</ul>
+</section>
+
+<section>
+	<h3>Getting started for Web Development</h3>
+</section>
+
+<section class="r-fit-text">
+	<h3>Web App Architecture</h3>
+	<img src="images/webdev/webdev-arch.png" style="height: 400px;"></img>
+</section>
+
+<section class="r-fit-text">
+	<h3>HTTP Request</h3>
+	<img src="images/webdev/request.png" style="height: 400px;"></img>
+</section>
+
+<section class="r-fit-text">
+	<h3>HTTP Response</h3>
+	<img src="images/webdev/response.png" style="height: 400px;"></img>
+</section>
+
+
+<section class="r-fit-text">
+	<h3>Frontend</h3>
+	<h4>HTML + CSS + JS</h4>
+	<ul>
+		<li>HTML: Hyper Text Markup Language</li> <ul><li>provides structure for webpage</li></ul>
+		<li>CSS: Cascading Style Sheets</li> <ul><li>describes style of HTML elements on webpage</li></ul>
+		<li>JS: JavaScript</li> <ul><li>defines behaviour of HTML elements</li></ul>
+	</ul>
+</section>
+
+
+<section>
+	<h3>Templating</h3>
+	<ul>
+		<li>process of separating the design of a website from the code that manages the data and functionality</li>
+		<li>used to create dynamic web pages that can interact with a database, process user input, and perform other tasks</li>
+		<li>allow developers to create reusable templates that can be easily updated and customized without affecting the other code</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Template Engines</h3>
+	<ul>
+		<li>handlebars: Handlebars templating implemented in Rust </li>
+		<li>askama: ype-safe, compiled Jinja-like templates for Rust </li>
+		<li>tera: Template engine based on Jinja2/Django templates </li>
+		<li>liquid: The liquid templating language for Rust </li>
+	</ul>
+</section>
+
+<section>
+	<h3>Templating Example</h3>
+	<pre data-id="code-animation" style="font-size: 20px;">
+		<code class="hljs html" data-trim data-line-numbers>
+			{% include "header.html" %}
+			<h1>Welcome to {{ name }} blog</h1>
+				{% for student in students %}
+					<div>
+					<h3>{{ student.name }}</h3>
+					<p>{{ student.score }}</p>
+					</div>
+				{% endfor %}
+
+				<ul>
+					{% for key, value in books %}
+					<li>{{ key }} - {{ value.author }}</li>
+					{% endfor %}
+				</ul>
+
+			{% include "footer.html" %}
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>Web API</h3>
+	<small>(Application Programming Interface)</small>
+	<p>	It is a set of rules and protocols that allows different software applications to communicate with each other over the internet. 
+		It enables interaction and data exchange between different systems, allowing developers to access and manipulate resources or perform specific actions on remote servers.</p>
+	<!-- <ul>
+		<li></li>
+	</ul> -->
+</section>
+
+<section>
+	<h3>Web API Examples</h3>
+	<ul>
+		<li>GET /weather/{city}</li>
+		<li>POST /weather/{city}/forecast</li>
+		<li>POST /weather/{city}/subscribe</li>
+		<li>DELETE /weather/{city}/unsubscribe</li>
+	</ul>
+</section>
+
+
+<section>
+	<h3>Backend</h3>
+	<ul style="font-size: 36px;">
+		<li>The backend refers to the server-side of a web application</li>
+		<li>It is responsible for processing requests from clients(browsers) and generating appropriate responses.</li>
+		<li>The backend typically handles tasks such as data processing, interacting with databases, and coordinating communication with other services.</li>
+	</ul>
+</section>
+
+
+<section>
+	<h3>Web Frameworks and Libraries</h3>
+	<ul>
+		<li><a>Rocket</a>: A powerful and ergonomic framework for building web applications in Rust. </li>
+		<li><a>Axum</a>: A lightweight, scalable, and asynchronous web framework built on top of the Actix actor framework. </li>
+		<li><a>Warp</a>: A lightweight and flexible web framework for building fast and composable web services in Rust.</li>
+	</ul>
+	
+</section>
+
+
+<section>
+	<h3>WebAssembly</h3>
+	<p>WebAssembly (often abbreviated as Wasm) is a binary instruction format designed to be executed efficiently in web browsers. It serves as a compilation target for programming languages like Rust, enabling them to run at near-native speed in the browser environment.</p>
+</section>
+
+
+<section>
+	<h3>WebAssembly: Use Cases</h3>
+	<li>Running computationally intensive tasks, such as image processing or cryptography, in the browser.</li>
+	<li>Building interactive web applications with complex logic that can be offloaded to the client-side.</li>
+	<li>Enabling cross-platform development by sharing code between web and non-web projects.</li>
+</section>
+
+
+<section>
+	<h3>Simple Web-Server in Rust</h3>
+	<pre data-id="code-animation" style="font-size: 20px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			#[macro_use]
+			extern crate rocket;
+			
+			#[get("/")]
+			fn hello() -> &'static str {
+				"Hello, Rust!"
+			}
+			
+			#[launch]
+			fn rocket() -> _ {
+				rocket::build().mount("/", routes![hello])
+			}			
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>Demo</h3>
+</section>
+
+
+<section>
+	<h1>Thank You</h1>
+	<img src="images/rustacean.gif"></img>
+	<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/s/2464zp59y')"> Open Editor</p> -->
+</section>
+
+
+
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK ENDS HERE  *************          |
++----------------------------------------------------------------------------->
+		</div>
+	
+</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<!-- <script src="js/jquery-3.6.3.min.js"></script> -->
+		<script>
+
+			var static_elements = document.getElementById("static-elements");
+			static_elements.hidden = true;
+
+			var slide_number = document.getElementById("slide-number");
+			slide_number.onclick = function() {
+				window.location.href = '#/1';
+			}
+
+			var SlidesDiv =  document.getElementById("SlidesDiv");
+			var EditorDiv = document.getElementById("EditorDiv");
+			var EditorFrame = document.getElementById("EditorFrame");
+			var BackButton = document.getElementById("BackToPresentation");
+			var CurrentURL = '';
+			var isEditorOpen = false;
+
+			var CloseEditor = function() {
+				isEditorOpen = false;
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				Reveal.prev();
+				Reveal.next();
+			}
+
+			var OpenEditor = function(url) {
+				
+				isEditorOpen = true;
+
+				// window.open(url);
+
+				SlidesDiv.style.display = "none"; 
+				BackButton.style.display = "block";
+				EditorDiv.style.display = "block";
+				if(CurrentURL != url){
+					CurrentURL = url;
+					EditorFrame.src = url;
+				};
+
+				// SlidesDiv.hidden = true;
+				// EditorDiv.hidden = false;
+
+				// const iframeContainer = document.getElementById("EditorDiv");
+				// const iframe = document.getElementById("iframe");
+				// //check if an iframe exits. if it does, remove it and replace it with the new one
+				// if (iframe) { iframeContainer.removeChild(iframe); }
+				// const newIframe = document.createElement("iframe");
+				// newIframe.src = url;
+				// newIframe.id = "iframe";
+				// newIframe.sandbox = "allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock";
+				// newIframe.style.width = "100%";
+				// newIframe.style.height = "800px";
+				// newIframe.style.marginTop = "70px";
+				// iframeContainer.appendChild(newIframe);
+			}
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				// EditorDiv.hidden = true;
+				// SlidesDiv.hidden = false;
+
+				if(isEditorOpen) {
+					isEditorOpen = false;
+					Reveal.prev();
+					Reveal.next();
+				};
+				if(event.indexh>0) {
+					static_elements.hidden = false;
+					var number = "";
+					number += event.indexh;
+					if(event.indexv > 0)number += "."+event.indexv;
+					slide_number.innerHTML = number;
+				}else{
+					static_elements.hidden = true;
+				}
+			});
+
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/			
+			Reveal.initialize({
+				hash: true,
+				transition: 'convex',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
