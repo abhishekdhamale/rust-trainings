@@ -1033,6 +1033,20 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			let s: String = String::from("hello world");
+
+			let world: &str = &s[6..11];
+		</code>
+	</pre>
+	<img style="height: 500px;" data-src="images/string&str.svg">
+</section>
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+
+<section>
 	<h3>Initialization</h3>
 	<p>String</p>
 	<pre data-id="code-animation">
@@ -1059,19 +1073,6 @@
 	</pre>
 </section>
 
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			let s: String = String::from("hello world");
-
-			let world: &str = &s[6..11];
-		</code>
-	</pre>
-	<img style="height: 500px;" data-src="images/string&str.svg">
-</section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
@@ -1527,7 +1528,7 @@ fn main () {
 				pub fn public_function() { }
 				fn private_function() { }
 				pub(crate) fn crate_function() { }
-				pub(in crate::my_module::nested) fn restricted_function() {
+				pub(in crate::my_module::nested) fn restricted_function() { }
 			}
 			
 			fn main() {
