@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>rust-basics-quiz1</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/night.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+	<div id="EditorDiv" hidden>
+		<!-- <button onclick="CloseEditor()">Back to Presentation</button> -->
+		<iframe
+			id="EditorFrame"
+			style="width:100%; height:780px; border:0; border-radius: 4px; overflow:hidden; align-items: center; margin-top: 70px;"
+			sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock"
+		></iframe>
+		<!-- <embed src="https://codesandbox.io/embed/new?codemirror=1"
+		id="EditorFrame"
+		width=1200
+		height=800
+		onerror="alert('URL invalid !!');" /> -->
+	</div>
+<div class="reveal">
+
+	<div id="static-elements">
+		<div class="header-left">
+			<!-- <img src="images/rust_logo.png"></img> -->
+		</div>
+		<div class="header-right">
+			<a href="#/1"><img src="../images/rustacean.png"></img></a>
+		</div>
+		
+		<div class="header-center">
+			<!-- <div class="slide-chapter"></div> -->
+			<button id="BackToPresentation" class="BackBtn" onclick="CloseEditor()"><< Back to Presentation</button>
+		</div>
+		<div class="footer-center">
+			<!-- <div class="slide-title">test</div> -->
+		</div>
+
+		<div class="footer-left">
+			<footnote><text id="slide-number"></text></footnote>
+		</div>
+
+		<!-- <div class="footer-right">
+		</div> -->
+	</div>
+
+
+
+	<div class="slides" id="SlidesDiv">
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK STARTS HERE  *************        |
++----------------------------------------------------------------------------->
+
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section class="r-fit-text">
+	<img src="../images/rust_logo.png" style="height: 100px;"></img>
+	<h3>Rust Fundamentals Quiz-1</h3>
+	<small>Bosch Cybersecurity University</small>
+</section>
+
+
+<!----------------------------------------------------------------------------+
+|       ************* CODE FOR SLIDES DECK STARTS HERE  *************         |
++----------------------------------------------------------------------------->
+<section data-markdown data-transition="fade">
+	<script type="text/template">
+		#### Q.1 What does the dereference operator (*) do in Rust?
+		1. Accesses the value at a memory address
+		2. Creates a raw pointer
+		3. Multiplies two numbers
+		4. Duplicates a value
+
+		---
+
+		#### Q.1 What does the dereference operator (*) do in Rust?
+		1. <a>Accesses the value at a memory address</a>
+		2. Creates a raw pointer
+		3. Multiplies two numbers
+		4. Duplicates a value
+
+		---
+
+		#### Q.2 Which keyword is used to define an mutable variable in Rust?
+		### ___
+
+		---
+
+		#### Q.2 Which keyword is used to define an mutable variable in Rust?
+		### <a>mut</a>
+
+		---
+
+		#### Q.3 What does the 'const' keyword indicate in Rust?  
+		1. The variable can be mutated 
+		2. The value of the variable cannot be changed 
+		3. The variable has a static lifetime 
+		4. The variable is allocated on the heap
+
+		---
+
+		#### Q.3 What does the 'const' keyword indicate in Rust?  
+		1. The variable can be mutated 
+		2. <a>The value of the variable cannot be changed</a>
+		3. The variable has a static lifetime 
+		4. The variable is allocated on the heap
+
+		---
+
+		#### Q.4 The keyword used in Rust to create a instance of a struct is ___.
+
+		---
+
+		#### The keyword used in Rust to create a instance of a struct is <a>new</a>.
+
+		---
+
+		#### Q.5 In Rust, which keyword is used to create an immutable reference to a value?  
+		1. const 
+		2. mut 
+		3. ref 
+		4. & (ampersand) 
+		
+		---
+
+		#### Q.5 In Rust, which keyword is used to create an immutable reference to a value?  
+		1. const 
+		2. mut 
+		3. ref 
+		4. <a>& (ampersand)</a>
+
+		---
+
+		#### Q.6 Which of the following is true about Rust's ownership system?  
+		1. There are no restrictions on sharing mutable references 
+		2. Ownership can be shared without any limitations 
+		3. Rust prevents data races at compile time 
+		4. Rust doesn't allow borrowing references 
+		 
+		---
+
+		#### Q.6 Which of the following is true about Rust's ownership system?  
+		1. There are no restrictions on sharing mutable references 
+		2. Ownership can be shared without any limitations 
+		3. <a>Rust prevents data races at compile time</a> 
+		4. Rust doesn't allow borrowing references
+
+		---
+
+		#### Q.7 What does the 'Option' type represent in Rust?  
+		1. A type that indicates an error condition  
+		2. A type that represents a nullable value  
+		3. A type that allows for dynamic method dispatch  
+		4. A type that indicates a successful operation 
+		
+		---
+
+		#### Q.7 What does the 'Option' type represent in Rust?  
+		1. A type that indicates an error condition  
+		2. <a>A type that represents a nullable value</a>
+		3. A type that allows for dynamic method dispatch  
+		4. A type that indicates a successful operation
+
+		---
+
+		#### Q.8 Rust provides a mechanism to handle errors using the _______ type. 
+		
+		---
+
+		#### Rust provides a mechanism to handle errors using the <a>Result</a> type.
+
+		---
+		
+		#### Q.9 Rust provides an abstraction for managing concurrent programming called ____________.
+
+		---
+
+		#### Rust provides an abstraction for managing concurrent programming called <a>async/await</a>.
+	</script>
+</section>
+
+<section>
+	<h1>Thank You</h1>
+	<img src="../images/rustacean.gif"></img>
+	<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/s/2464zp59y')"> Open Editor</p> -->
+</section>
+
+
+
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK ENDS HERE  *************          |
++----------------------------------------------------------------------------->
+		</div>
+	
+</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<!-- <script src="js/jquery-3.6.3.min.js"></script> -->
+		<script>
+
+			var static_elements = document.getElementById("static-elements");
+			static_elements.hidden = true;
+
+			var slide_number = document.getElementById("slide-number");
+			slide_number.onclick = function() {
+				window.location.href = '#/1';
+			}
+
+			var SlidesDiv =  document.getElementById("SlidesDiv");
+			var EditorDiv = document.getElementById("EditorDiv");
+			var EditorFrame = document.getElementById("EditorFrame");
+			var BackButton = document.getElementById("BackToPresentation");
+			var CurrentURL = '';
+			var isEditorOpen = false;
+
+			var CloseEditor = function() {
+				isEditorOpen = false;
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				Reveal.prev();
+				Reveal.next();
+			}
+
+			var OpenEditor = function(url) {
+				
+				isEditorOpen = true;
+
+				// window.open(url);
+
+				SlidesDiv.style.display = "none"; 
+				BackButton.style.display = "block";
+				EditorDiv.style.display = "block";
+				if(CurrentURL != url){
+					CurrentURL = url;
+					EditorFrame.src = url;
+				};
+
+				// SlidesDiv.hidden = true;
+				// EditorDiv.hidden = false;
+
+				// const iframeContainer = document.getElementById("EditorDiv");
+				// const iframe = document.getElementById("iframe");
+				// //check if an iframe exits. if it does, remove it and replace it with the new one
+				// if (iframe) { iframeContainer.removeChild(iframe); }
+				// const newIframe = document.createElement("iframe");
+				// newIframe.src = url;
+				// newIframe.id = "iframe";
+				// newIframe.sandbox = "allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock";
+				// newIframe.style.width = "100%";
+				// newIframe.style.height = "800px";
+				// newIframe.style.marginTop = "70px";
+				// iframeContainer.appendChild(newIframe);
+			}
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				// EditorDiv.hidden = true;
+				// SlidesDiv.hidden = false;
+
+				if(isEditorOpen) {
+					isEditorOpen = false;
+					Reveal.prev();
+					Reveal.next();
+				};
+				if(event.indexh>0) {
+					static_elements.hidden = false;
+					var number = "";
+					number += event.indexh;
+					if(event.indexv > 0)number += "."+event.indexv;
+					slide_number.innerHTML = number;
+				}else{
+					static_elements.hidden = true;
+				}
+			});
+
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/			
+			Reveal.initialize({
+				hash: true,
+				transition: 'convex',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

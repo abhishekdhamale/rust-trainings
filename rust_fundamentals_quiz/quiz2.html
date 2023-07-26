@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>rust-basics-quiz2</title>
+
+		<link rel="stylesheet" href="../dist/reset.css">
+		<link rel="stylesheet" href="../dist/reveal.css">
+		<link rel="stylesheet" href="../dist/theme/night.css">
+		<link rel="stylesheet" href="../css/style.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css">
+	</head>
+	<body>
+	<div id="EditorDiv" hidden>
+		<!-- <button onclick="CloseEditor()">Back to Presentation</button> -->
+		<iframe
+			id="EditorFrame"
+			style="width:100%; height:780px; border:0; border-radius: 4px; overflow:hidden; align-items: center; margin-top: 70px;"
+			sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock"
+		></iframe>
+		<!-- <embed src="https://codesandbox.io/embed/new?codemirror=1"
+		id="EditorFrame"
+		width=1200
+		height=800
+		onerror="alert('URL invalid !!');" /> -->
+	</div>
+<div class="reveal">
+
+	<div id="static-elements">
+		<div class="header-left">
+			<!-- <img src="images/rust_logo.png"></img> -->
+		</div>
+		<div class="header-right">
+			<a href="#/1"><img src="../images/rustacean.png"></img></a>
+		</div>
+		
+		<div class="header-center">
+			<!-- <div class="slide-chapter"></div> -->
+			<button id="BackToPresentation" class="BackBtn" onclick="CloseEditor()"><< Back to Presentation</button>
+		</div>
+		<div class="footer-center">
+			<!-- <div class="slide-title">test</div> -->
+		</div>
+
+		<div class="footer-left">
+			<footnote><text id="slide-number"></text></footnote>
+		</div>
+
+		<!-- <div class="footer-right">
+		</div> -->
+	</div>
+
+
+
+	<div class="slides" id="SlidesDiv">
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK STARTS HERE  *************        |
++----------------------------------------------------------------------------->
+
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section class="r-fit-text">
+	<img src="../images/rust_logo.png" style="height: 100px;"></img>
+	<h3>Rust Fundamentals Quiz-2</h3>
+	<small>Bosch Cybersecurity University</small>
+</section>
+
+
+<!----------------------------------------------------------------------------+
+|       ************* CODE FOR SLIDES DECK STARTS HERE  *************         |
++----------------------------------------------------------------------------->
+<section data-markdown data-transition="fade">
+	<script type="text/template">
+		#### Q.1 A Rust struct can implement multiple traits using the impl ________ for ________ syntax. 
+
+		---
+
+		#### A Rust struct can implement multiple traits using the impl <a>< Trait ></a> for <a>< Struct></a> syntax. 
+
+		---
+
+		#### Q.2 A struct can implement multiple traits in Rust:  
+		1. True  
+		2. False 
+
+		---
+
+		#### Q.2 A struct can implement multiple traits in Rust:  
+		1. <a>True</a>
+		2. False 
+
+		---
+
+		#### Q.3 What is the purpose of using generic functions in Rust?  
+		1. To allow for function overloading  
+		2. To handle errors gracefully  
+		3. To work with different data types  
+		4. To enable recursion 
+
+		---
+
+		#### Q.3 What is the purpose of using generic functions in Rust?  
+		1. To allow for function overloading  
+		2. To handle errors gracefully  
+		3. <a>To work with different data types </a>
+		4. To enable recursion 
+
+		---
+
+		#### Q.4 The primary advantage of using generic types in Rust is:  
+		1. Better runtime performance  
+		2. Avoiding static dispatch  
+		3. Easier debugging  
+		4. Reduced compilation time 
+
+		---
+
+		#### Q.4 The primary advantage of using generic types in Rust is:  
+		1. Better runtime performance  
+		2. <a>Avoiding static dispatch</a>  
+		3. Easier debugging  
+		4. Reduced compilation time
+
+		---
+
+		#### Q.5 Lifetimes in Rust help prevent:  
+		1. Runtime errors  
+		2. Memory leaks  
+		3. Compile-time errors  
+		4. Deadlocks 
+
+		---
+
+		#### Q.5 Lifetimes in Rust help prevent:  
+		1. Runtime errors  
+		2. Memory leaks  
+		3. Compile-time errors  
+		4. <a>Deadlocks</a>
+
+		---
+
+		#### Q.6 Lifetimes are denoted by:  
+		1. #(hash)
+		2. *(asterisk)
+		3. &(ampersand)  
+		4. '(single quote mark)
+
+		---
+
+		#### Q.6 Lifetimes are denoted by:  
+		1. #(hash)
+		2. *(asterisk)
+		3. &(ampersand)  
+		4. <a>'(single quote mark)</a>
+
+
+		---
+
+		#### Q.7 The Result type in Rust is used for:  
+		1. Handling asynchronous tasks  
+		2. Handling errors that may occur at runtime  
+		3. Defining custom data types  
+		4. Parsing JSON data 
+
+		---
+
+		#### Q.7 The Result type in Rust is used for:  
+		1. Handling asynchronous tasks  
+		2. <a>Handling errors that may occur at runtime</a>
+		3. Defining custom data types  
+		4. Parsing JSON data 
+
+		---
+
+		#### Q.8 The unwrap() method on a Result will:  
+		1. Unconditionally return the Ok value  
+		2. Unconditionally return the Err value  
+		3. Panic if the result is Err  
+		4. Do nothing and return unit () 
+
+		---
+
+		#### Q.8 The unwrap() method on a Result will:  
+		1. <a>Unconditionally return the Ok value </a>
+		2. Unconditionally return the Err value  
+		3. Panic if the result is Err  
+		4. Do nothing and return unit () 
+
+		---
+
+		#### Q.9 Which of the following is NOT a primitive for safe concurrent programming in Rust?  
+		1. Mutex  
+		2. Channel  
+		3. Thread  
+		4. Race 
+
+		---
+
+		#### Q.9 Which of the following is NOT a primitive for safe concurrent programming in Rust?  
+		1. Mutex  
+		2. Channel  
+		3. Thread  
+		4. <a>Race</a> 
+
+		---
+
+		#### Q.10 Which of the following is NOT a benefit of using threads in Rust?  
+		1. Improved parallelism  
+		2. Efficient memory sharing  
+		3. Enhanced responsiveness  
+		4. Simplified error handling 
+
+		---
+
+		#### Q.10 Which of the following is NOT a benefit of using threads in Rust?  
+		1. Improved parallelism  
+		2. Efficient memory sharing  
+		3. Enhanced responsiveness  
+		4. <a>Simplified error handling</a>
+
+		---
+
+		#### Q.11 Rust provides the ______ type in the std::sync module for shared ownership of data across threads. 
+
+		---
+
+		#### Rust provides the <a>Arc</a> type in the std::sync module for shared ownership of data across threads. 
+
+		---
+
+		#### Q.12 To access data protected by a Mutex, we need to acquire a ________. 
+
+		---
+
+		#### To access data protected by a Mutex, we need to acquire a <a>lock</a>. 
+
+		---
+
+		#### Q.13 The async keyword is used to mark functions that return a ________. 
+
+		---
+
+		#### The async keyword is used to mark functions that return a <a>future</a>.
+	</script>
+</section>
+
+
+<section>
+	<h1>Thank You</h1>
+	<img src="../images/rustacean.gif"></img>
+	<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/s/2464zp59y')"> Open Editor</p> -->
+</section>
+
+
+
+<!----------------------------------------------------------------------------+
+|        ************* CODE FOR SLIDES DECK ENDS HERE  *************          |
++----------------------------------------------------------------------------->
+		</div>
+	
+</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<!-- <script src="js/jquery-3.6.3.min.js"></script> -->
+		<script>
+
+			var static_elements = document.getElementById("static-elements");
+			static_elements.hidden = true;
+
+			var slide_number = document.getElementById("slide-number");
+			slide_number.onclick = function() {
+				window.location.href = '#/1';
+			}
+
+			var SlidesDiv =  document.getElementById("SlidesDiv");
+			var EditorDiv = document.getElementById("EditorDiv");
+			var EditorFrame = document.getElementById("EditorFrame");
+			var BackButton = document.getElementById("BackToPresentation");
+			var CurrentURL = '';
+			var isEditorOpen = false;
+
+			var CloseEditor = function() {
+				isEditorOpen = false;
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				Reveal.prev();
+				Reveal.next();
+			}
+
+			var OpenEditor = function(url) {
+				
+				isEditorOpen = true;
+
+				// window.open(url);
+
+				SlidesDiv.style.display = "none"; 
+				BackButton.style.display = "block";
+				EditorDiv.style.display = "block";
+				if(CurrentURL != url){
+					CurrentURL = url;
+					EditorFrame.src = url;
+				};
+
+				// SlidesDiv.hidden = true;
+				// EditorDiv.hidden = false;
+
+				// const iframeContainer = document.getElementById("EditorDiv");
+				// const iframe = document.getElementById("iframe");
+				// //check if an iframe exits. if it does, remove it and replace it with the new one
+				// if (iframe) { iframeContainer.removeChild(iframe); }
+				// const newIframe = document.createElement("iframe");
+				// newIframe.src = url;
+				// newIframe.id = "iframe";
+				// newIframe.sandbox = "allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-top-navigation allow-orientation-lock";
+				// newIframe.style.width = "100%";
+				// newIframe.style.height = "800px";
+				// newIframe.style.marginTop = "70px";
+				// iframeContainer.appendChild(newIframe);
+			}
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				EditorDiv.style.display = "none"
+				BackButton.style.display = "none";
+				SlidesDiv.style.display = "block";
+				// EditorDiv.hidden = true;
+				// SlidesDiv.hidden = false;
+
+				if(isEditorOpen) {
+					isEditorOpen = false;
+					Reveal.prev();
+					Reveal.next();
+				};
+				if(event.indexh>0) {
+					static_elements.hidden = false;
+					var number = "";
+					number += event.indexh;
+					if(event.indexv > 0)number += "."+event.indexv;
+					slide_number.innerHTML = number;
+				}else{
+					static_elements.hidden = true;
+				}
+			});
+
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/			
+			Reveal.initialize({
+				hash: true,
+				transition: 'convex',
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
