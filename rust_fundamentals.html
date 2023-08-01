@@ -80,15 +80,15 @@
 	<ul style="font-size: 32px;">
 		<li><a href="#/2">Basics of Rust</a></li>
 		<li><a href="#/6">Data types</a></li>
-		<li><a href="#/30">Functions</a></li>
-		<li><a href="#/41">Strings</a></li>
-		<li><a href="#/49">Ownership</a></li>
-		<li><a href="#/56">Traits</a></li>
-		<li><a href="#/69">Memory Management</a></li>
-		<li><a href="#/92">Control Flow</a></li>
-		<li><a href="#/107">Error Handling</a></li>
-		<li><a href="#/116">Concurrency</a></li>
-		<li><a href="#/124">Async and Await</a></li>
+		<li><a href="#/31">Functions</a></li>
+		<li><a href="#/42">Strings</a></li>
+		<li><a href="#/50">Ownership</a></li>
+		<li><a href="#/57">Traits</a></li>
+		<li><a href="#/71">Memory Management</a></li>
+		<li><a href="#/94">Control Flow</a></li>
+		<li><a href="#/108">Error Handling</a></li>
+		<li><a href="#/117">Concurrency</a></li>
+		<li><a href="#/125">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -301,7 +301,7 @@
 	<ul>
 		<li>Data type subsets: <em><a>scalar</a></em> and <em><a>compound</a></em></li>
 		<li>Rust is a <a>statically typed</a> language, which means that it <a>must know the types</a> of all variables at <a>compile time</a></li>
-		<li>Data Structures in Rust</li>
+		<li><a>Data Structures</a></li>
 	</ul>
 </section>
 
@@ -651,6 +651,33 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
+	<h2>Tuple structs</h2>
+	<ul>
+		<li><a>'tuple struct'</a> is a hybrid between tuple and struct.</li>
+		<li>Tuple structs have a name, but their fields don't.</li>
+		<li>Declared with <a>struct</a> keyword, and then with a name followed by tuple </li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			struct Person(String, u32);
+			fn main() {
+				// Create a new instance of the 'Person' tuple struct
+				let person1 = Person(String::from("Alice"), 30);
+				let person2 = Person(String::from("Bob"), 25);
+			
+				// Access the fields of the tuple struct using dot notation
+				println!("{} is {} years old.", person1.0, person1.1);
+				println!("{} is {} years old.", person2.0, person2.1);
+			}
+		</code>
+	</pre>
+
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
 	<h2>Enums</h2>
 	<ul style="font-size: 34px;">
 		<li>The <strong>`<a href="https://doc.rust-lang.org/std/keyword.enum.html" target="_blank">enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a>.</li>
@@ -713,7 +740,7 @@
 	<pre data-id="code-animation"> 
 		<code class="hljs rust" data-trim data-line-numbers>
 			//define a function
-			fn function_name(arguments) -> return_val {
+			fn function_name(arguments) -> return_type {
 				// code
 			}
 		</code>
@@ -843,7 +870,7 @@
 <section>
 	<h2>Associated Functions</h2>
 	<ul style="font-size: 34px;">
-		<li>function that belongs to a struct or enum, rather than an instance of that struct or enum</li>
+		<li>Function that belongs to a struct or enum, rather than an instance of that struct or enum</li>
 		<li>Associated functions are called using the name of the struct or enum, followed by the double colon (<a>::</a>) operator</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 21px;">
@@ -1479,6 +1506,44 @@ fn main () {
 	</pre>
 </section>
 
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+
+<section>
+	<h3><strong>+</strong> Operator & <strong>where</strong> Clause</h3>
+	<p><strong><a>+</a></strong> operator is used to add more trait bound.</p>
+	<pre data-id="code-animation" style="font-size: 19px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub fn calculate< T: Calculator + other_Trait> (item: T) -> u32 { 
+				/// function's stuff
+				
+			}
+		</code>
+	</pre>
+
+	<p style="font-size: 36px;"><strong>`<a href="https://doc.rust-lang.org/std/keyword.where.html" target="_blank">where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
+	<pre data-id="code-animation" style="font-size: 19px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			/// without where clause
+			pub fn calculate< T:Calculator, U:Display> (item: T, data: Display) -> u32 {
+				/// function's stuff
+			}
+			
+			///with where clause
+			pub fn calculate< T, U> (item: T, data: Display) -> u32 
+			   where T: Calculator,
+					 U: Display
+			{
+				/// function's stuff
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
 
 <section>
 	<h3><a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank">Lifetimes</a></h3>
@@ -1596,7 +1661,7 @@ fn main () {
 		<li>When size of the value is dynamic like <a>Strings/Vectors</a></li>
 		<li>When you manually create a <a>Box < T ></a> value which is allocated on heap</li>
 	</ol>
-	<p>In both exception cases, the value will be allocated on Heap and its pointer will live on the Stack.</p>
+	<p>In both cases, the value will be allocated on Heap and its pointer will live on the Stack.</p>
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -1818,7 +1883,7 @@ fn main () {
 				if price == 1 {
 				  println!(“price is 1.”);
 					}
-				else if price = 2 {
+				else if price == 2 {
 				  println!(“price is 2.”);
 				}
 				else {
@@ -1891,7 +1956,7 @@ fn main () {
 <section>
 	<h3>loop</h3>
 	<ul>
-		<li>Used to execute over block of code <a><strong><em>forever</em></strong></a>, Or until it is stopped, or the program quits.</li>
+		<li>Used to execute over block of code <a><strong><em>forever</em></strong></a>, or until it is stopped, or the program quits.</li>
 		<li>Instead of having this <strong>`<a href="https://doc.rust-lang.org/std/keyword.loop.html" target="_blank">loop</a>`</strong> infinitely the <strong>`<a href="https://doc.rust-lang.org/std/keyword.break.html" target="_blank">break</a>`</strong> keyword can be used.</li>
 	</ul>
 	<pre data-id="code-animation">
@@ -2101,40 +2166,6 @@ fn main () {
 	</pre>
 </section>
 
-
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3><strong>+</strong> Operator & <strong>where</strong> Clause</h3>
-	<p><strong><a>+</a></strong> operator is used to add more trait bound.</p>
-	<pre data-id="code-animation" style="font-size: 19px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			pub fn calculate< T: Calculator + other_Trait> (item: T) -> u32 { 
-				/// function's stuff
-				
-			}
-		</code>
-	</pre>
-
-	<p style="font-size: 36px;"><strong>`<a href="https://doc.rust-lang.org/std/keyword.where.html" target="_blank">where</a>`</strong> clause is used to simplify the concept of Trait Bound like</p>
-	<pre data-id="code-animation" style="font-size: 19px;">
-		<code class="hljs rust" data-trim data-line-numbers>
-			/// without where clause
-			pub fn calculate< T:Calculator, U:Display> (item: T, data: Display) -> u32 {
-				/// function's stuff
-			}
-			
-			///with where clause
-			pub fn calculate< T, U> (item: T, data: Display) -> u32 
-			   where T: Calculator,
-					 U: Display
-			{
-				/// function's stuff
-			}
-		</code>
-	</pre>
-</section>
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Error handling in rust                               |
