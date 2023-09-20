@@ -139,9 +139,11 @@
 
 <section>
 	<h3>Compilation Process in Rust</h3>
+	<a style="font-size: 32px;" href="https://github.com/nihalpasham/rustBoot/blob/main/boards/bootloaders/stm32f334/Cargo.toml" target="_blank">TOML file</a>
+	<br>
 	<img src="images/rustBuild.png" height="440px"></img>
 	<br>
-	<a href="https://github.com/nihalpasham/rustBoot/blob/main/boards/bootloaders/stm32f334/Cargo.toml" target="_blank">TOML file</a>
+	
 </section>
 
 
@@ -652,7 +654,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Tuple structs</h2>
-	<ul>
+	<ul style="font-size: 36px;">
 		<li><a>'tuple struct'</a> is a hybrid between tuple and struct.</li>
 		<li>Tuple structs have a name, but their fields don't.</li>
 		<li>Declared with <a>struct</a> keyword, and then with a name followed by tuple </li>
@@ -1116,7 +1118,7 @@
 			let s3 = s1 + &s2;             // Concat using the `+` operator
 			let s4 = format!("{}{}",s1,s2);// Concat using the format! macro
 			s2.push_str(", & memory safe");// Appending using the push_str
-			let slice = &s[0..2];          // Slicing using string indices
+			let slice = &s1[0..2];          // Slicing using string indices
 
 			for c in "hello".chars() {     // Iterating over the string
 				println!("{}", c);
@@ -1337,11 +1339,11 @@ fn main () {
 	<p><strong>Example</strong></p>
 	<pre data-id="code-animation" style="width: 800px; height: 420px; font-size: 14px;">
 		<code class="hljs rust" data-trim data-line-numbers>
-			struct Data {
+			struct Calc {
 				first_num: i32,
 				second_num: i32
 			}
-			impl Calculator for Data {
+			impl Calculator for Calc {
 				fn add(&self) -> i32 {
 					self.first_num + self.second_num
 				}
