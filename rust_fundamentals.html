@@ -138,10 +138,10 @@
 
 
 <section>
-	<h3>Compilation Process in Rust</h3>
-	<a style="font-size: 32px;" href="https://github.com/nihalpasham/rustBoot/blob/main/boards/bootloaders/stm32f334/Cargo.toml" target="_blank">TOML file</a>
+	<h4>Compilation Process in Rust</h4>
+	<a style="font-size: 22px;" href="https://github.com/nihalpasham/rustBoot/blob/main/boards/bootloaders/stm32f334/Cargo.toml" target="_blank">TOML file</a>
 	<br>
-	<img src="images/rustBuild.png" height="440px"></img>
+	<img src="images/rust-project-folder-structure.png" height="440px"></img>
 	<br>
 	
 </section>
@@ -1123,7 +1123,7 @@
 			for c in "hello".chars() {     // Iterating over the string
 				println!("{}", c);
 			}
-			println!("Length:{}", s.len());// Finding the length of a string
+			println!("Length:{}", s1.len());// Finding the length of a string
 			if(s1.starts_with("he")){}     // Check if starts with a prefix
 			if(s1.ends_with("ld")){}       // Check if ends with a suffix
 		</code>
@@ -1407,12 +1407,12 @@ fn main () {
 				}
 			}
 			
-			struct Data {
+			struct calc {
 				first_num: i32,
 				second_num: i32
 			}
 			
-			impl Calculator for Data {
+			impl Calculator for calc {
 				fn add(&self) -> i32 {
 					self.first_num + self.second_num
 				}
