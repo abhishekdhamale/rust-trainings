@@ -87,8 +87,8 @@
 		<li><a href="#/71">Memory Management</a></li>
 		<li><a href="#/94">Control Flow</a></li>
 		<li><a href="#/108">Error Handling</a></li>
-		<li><a href="#/117">Concurrency</a></li>
-		<li><a href="#/125">Async and Await</a></li>
+		<li><a href="#/120">Concurrency</a></li>
+		<li><a href="#/128">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -2360,6 +2360,60 @@ use std::fs::File;
 		</code>
 	</pre>
 </section>
+
+
+<section>
+	<h3>Range and Bounds Checking</h3>
+	<ul style="font-size: 33px;">
+		<li><a>Range Checking</a> ensures that a value falls within a specific acceptable range or interval</li>
+		<li><a>Bounds Checking</a> ensures that a index or reference to an element within a data structure (e.g. an array or slice) is within the valid bounds.</li>
+	</ul>
+	<!-- <pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+		</code>
+	</pre> -->
+</section>
+
+
+<section>
+	<h3>Range Checking</h3>
+	<pre data-id="code-animation" style="font-size: 20px; width: 1100px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let value = 42;
+				let lower_bound = 0;
+				let upper_bound = 100;
+
+				if(lower_bound..=upper_bound).contains(&value){
+					println!("Value {} is within the range {}..={}", value, lower_bound, upper_bound);
+				}else{
+					println!("Value {} is outside the valid range {}..={}", value, lower_bound, upper_bound);
+				}
+			}
+		</code>
+	</pre>
+</section>
+
+
+<section>
+	<h3>Bounds Checking</h3>
+	<pre data-id="code-animation" style="font-size: 20px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			fn main(){
+				let my_array = [1,2,3,4,5];
+				let index = 7; //Trying to access out-of-bounds indexh
+			
+				let result = my_array.get(index);
+			
+				match result{
+					Some(value) => println!("Value at index {} is {}",index, value),
+					None => println!("Index {} is out of bounds for the array", index)
+				}
+			}
+		</code>
+	</pre>
+</section>
+
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Concurrency in rust                                  |
