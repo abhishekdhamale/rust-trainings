@@ -80,15 +80,15 @@
 	<ul style="font-size: 32px;">
 		<li><a href="#/2">Basics of Rust</a></li>
 		<li><a href="#/6">Data types</a></li>
-		<li><a href="#/31">Functions</a></li>
-		<li><a href="#/42">Strings</a></li>
-		<li><a href="#/50">Ownership</a></li>
-		<li><a href="#/57">Traits</a></li>
-		<li><a href="#/71">Memory Management</a></li>
-		<li><a href="#/94">Control Flow</a></li>
-		<li><a href="#/108">Error Handling</a></li>
-		<li><a href="#/120">Concurrency</a></li>
-		<li><a href="#/128">Async and Await</a></li>
+		<li><a href="#/32">Functions</a></li>
+		<li><a href="#/47">Strings</a></li>
+		<li><a href="#/55">Ownership</a></li>
+		<li><a href="#/62">Traits</a></li>
+		<li><a href="#/76">Memory Management</a></li>
+		<li><a href="#/101">Control Flow</a></li>
+		<li><a href="#/115">Error Handling</a></li>
+		<li><a href="#/127">Concurrency</a></li>
+		<li><a href="#/135">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -273,24 +273,38 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Shadowing</h2>
-	<ul>
+	<h3>Shadowing</h3>
+	<ul style="font-size: 38px;">
 		<li>You can declare a new variable with the same name as a previous variable</li>
 		<li>The first variable is shadowed by the second</li>
 	</ul>
 	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
+		<code style="font-size: 18px;" class="hljs rust" data-trim data-line-numbers>
 			fn main() {
 				let x = 5;
 				let x = x + 1;
-
 				{
 					let x = x * 2;
 					println!("The value of x in the inner scope is: {x}");
 				}
-				
 				println!("The value of x is: {x}");
 			}
+		</code>
+	</pre>
+</section>
+
+<section>
+	<h3>Shadowing</h3>
+	<pre data-id="code-animation">
+		<p style="font-size: 36px;">Output:</p>
+		<code class="hljs rust" data-trim data-line-numbers>
+			$ cargo run
+			Compiling test-rust v0.1.0 (file:///projects/shadowing)
+			Finished dev [unoptimized + debuginfo] target(s) in 3.20s
+			Running `target/debug/test-rust`
+
+			The value of x in the inner scope is: 12
+			The value of x is: 6
 		</code>
 	</pre>
 </section>
@@ -835,11 +849,108 @@
 	</pre>
 </section>
 
+<section>
+	<h3><a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">Traits</a></h3>
+	<ul>
+		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
+		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
+	</ul>
+</section>
+
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Generic Functions</h2>
+	<h3>Trait Definition</h3>
+	<ul>
+		<li>Traits are defined by the <strong>`<a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">trait</a>`</strong> keyword followed by the name of the trait</li>
+		<li>While defining any trait we have to provide method signatures (method declaration)</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			pub trait Calculator {
+				fn add(&self) -> i32;
+				fn sub(&self) -> i32;
+				fn div(&self) -> i32;
+				fn mul(&self) -> i32;
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Trait implementation</h3>
+	<ul>
+		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.impl.html" target="_blank">impl</a>`</strong> keyword used to implement a trait</li>
+		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.for.html" target="_blank">for</a>`</strong> is used when implementing traits as in impl Trait for Type</li>
+	</ul>
+	<pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			impl trait_name for type_name {
+				
+				//method definitions
+			}
+		</code>
+	</pre>
+</section>
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<p><strong style="font-size: 22px;">Example</strong></p>
+	<pre data-id="code-animation" style="width: 800px; height: 420px; font-size: 14px;">
+		<code class="hljs rust" data-trim data-line-numbers>
+			struct Calc {
+				first_num: i32,
+				second_num: i32
+			}
+			impl Calculator for Calc {
+				fn add(&self) -> i32 {
+					self.first_num + self.second_num
+				}
+				fn sub(&self) -> i32 {
+					self.first_num - self.second_num
+				}
+				fn div(&self) -> i32 {
+					self.first_num / self.second_num
+				}
+				fn mul(&self) -> i32 {
+					self.first_num * self.second_num
+				}
+			}
+			fn main() {
+				println!("Output of Add: {}", Data {first_num:2, second_num: 2}.add());
+				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
+				println!("Output of Div: {}", Data {first_num:10, second_num: 2}.div());
+				println!("Output of Mul: {}", Data {first_num:2, second_num: 2}.mul());
+			}
+		</code>
+	</pre>
+	<pre data-id="code-animation" style="width: 800px; font-size: 15px;">
+		Output: 
+		<code class="hljs rust" data-trim data-line-numbers>
+		Compiling playground v0.0.1 (/playground)
+		Finished dev [unoptimized + debuginfo] target(s) in 0.59s
+			Running `target/debug/playground`
+
+		Output of Add: 4
+		Output of Sub: 2
+		Output of Div: 5
+		Output of Mul: 4
+		</code>
+	</pre>
+</section>
+
+
+<!----------------------------------------------------------------------------+
+|                                                                             |
++----------------------------------------------------------------------------->
+<section>
+	<h3>Generic Functions</h3>
 	<p style="font-size: 32px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
 	<pre data-id="code-animation" style="font-size: 19px;">
 		Example using <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html" target="_blank">PartialOrd</a> trait:
@@ -1022,7 +1133,7 @@
 
 <section>
 	<h2>Deref and String</h2>
-	<p>String implements <a href="https://doc.rust-lang.org/std/ops/trait.Deref.html" target="_blank">Deref</a> trait, which means that you can pass a <a href="https://doc.rust-lang.org/std/string/struct.String.html" target="_blank">&String</a> to something expecting a &str, and it will Just Work:</p>
+	<p>String implements <a href="https://doc.rust-lang.org/std/ops/trait.Deref.html" target="_blank">Deref</a> trait, which means that you can pass a <a href="https://doc.rust-lang.org/std/string/struct.String.html" target="_blank">&String</a> to something expecting a &str, and it will just work:</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn accepts_str(s: &str) {
@@ -1754,22 +1865,38 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Smart pointers in the standard library</h3>
+	<h3>Smart pointers in the std lib</h3>
 	<ul style="font-size: 38px;">
+		<li><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a> allows mutation even when only shared references are available</li>
 		<li><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> for allocating values on the heap</li>
 		<li><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a>, a reference counting type that enables multiple ownership</li>
 		<li><a href="https://doc.rust-lang.org/std/cell/struct.Ref.html" target="_blank">Ref< T ></a> and <a href="https://doc.rust-lang.org/std/cell/struct.RefMut.html" target="_blank">RefMut< T ></a>, accessed through <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a>, a type that enforces the borrowing rules at runtime instead of compile time</li>
+		<li><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a> used to represent a cell that can be mutated even when aliased or shared</li>
 	</ul>
 </section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
+
+<section>
+	<h3><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a></h3>
+	<ul>
+		<li>`Cell< T >` is a type that provides interior mutability, allowing mutation of a value even when it is shared.</li>
+		<li>Used in single-threaded scenarios where you need to mutate a value while having shared references to it.</li>
+	</ul>
+	<!-- <pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+	
+		</code>
+	</pre> -->
+</section>
+
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a></h3>
 	<ul>
 		<li>Boxes allow you to store data on the heap rather than the stack. What remains on the stack is the pointer to the heap data.</li>
-		<li>Box< T > allows immutable or mutable borrows checked at compile time</li>
+		<li><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> allows immutable or mutable borrows checked at compile time</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1787,10 +1914,10 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a></h3>
 	<ul style="font-size: 32px;">
-		<li>To enable multiple ownership explicitly by using the Rust type Rc<T>, which is an abbreviation for reference counting.</li>
-		<li>The Rc<T> type keeps track of the number of references to a value to determine whether or not the value is still in use</li>
+		<li>To enable multiple ownership explicitly by using the Rust type Rc< T >, which is an abbreviation for reference counting.</li>
+		<li>The Rc< T > type keeps track of the number of references to a value to determine whether or not the value is still in use</li>
 		<li>If there are zero references to a value, the value can be cleaned up without any references becoming invalid.</li>
-		<li>Rc<T> allows only immutable borrows checked at compile time</li>
+		<li>Rc< T > allows only immutable borrows checked at compile time</li>
 	</ul>
 	<!-- pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1805,9 +1932,9 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a></h3>
 	<ul style="font-size: 32px;">
-		<li>Rc< T >, the RefCell< T > type represents single ownership over the data it holds.</li>
+		<li>RefCell< T > type represents single ownership over the data it holds.</li>
 		<li>At any given time, you can have either (but not both) one mutable reference or any number of immutable references.</li>
-		<li>Rc< T > enables multiple owners of the same data; Box< T > and RefCell< T > have single owners.</li>
+		<li>Rc< T > enables multiple owners of the same data; <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> and RefCell< T > have single owners.</li>
 		<li>RefCell< T > allows immutable or mutable borrows checked at runtime.</li>
 	</ul>
 	<!-- pre data-id="code-animation">
@@ -1816,6 +1943,23 @@ fn main () {
 		</code>
 	</pre -->
 </section>
+
+
+
+<section>
+	<h3><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a></h3>
+	<ul style="font-size: 32px;">
+		<li>Provides a low-level mechanism to mutate a value even when aliased or shared, bypassing Rust's usual borrowing and ownership rules.</li>
+		<li>`UnsafeCell< T >` is essential for cases where you need mutable access to a value behind shared references but must ensure safety yourself.</li>
+		<li>Usage of UnsafeCell< T > typically takes place within unsafe blocks, allowing controlled, low-level manipulation while adhering to Rust's safety principles.</li>
+	</ul>
+	<!-- pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			// code here
+		</code>
+	</pre -->
+</section>
+
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Control flow                                         |
@@ -2243,8 +2387,8 @@ fn main () {
 		<code class="hljs rust" data-trim data-line-numbers>
 		fn main(){
 			enum Option< T > {
-				None,
 				Some(T),
+				None,
 			}
 		}
 		</code>
@@ -2312,7 +2456,7 @@ use std::fs::File;
 	<p>This is similar to match statement</p>
 	<pre data-id="code-animation" style="font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
-		fn question() -> Result <(), Error> {
+		fn question() -> Result < (), Error> {
 			// let x = ..
 			match ultimate_answer(x) {
 				Ok(_) => {},
@@ -2325,7 +2469,7 @@ use std::fs::File;
 	<p>The above code can be simplified using this <a>?</a></p>
 	<pre data-id="code-animation" style="font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
-    fn question() -> Result <(), Error> {
+    fn question() -> Result < (), Error> {
         // let x = // ...
         ultimate_answer(x)?; // if `ultimate_answer` returns an error, 
                              //`question` stops here 
@@ -2341,22 +2485,26 @@ use std::fs::File;
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Error Propagation</h2>
-	<ul style="font-size: 33px;">
+	<h3>Error Propagation</h3>
+	<ul style="font-size: 28px;">
 		<li>Code must propagate error information back to caller function after detecting it.</li>
 		<li>One of the benefits is that your code will look cleaner by simply propagating error information back to the caller that can handle the error.</li>
 		<li>Other benefit is that your function doesn’t need extra code to propagate both the successful and unsuccessful cases.</li>
 	</ul>
 	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-        use std::fs::File;
-        fn main() {
-            let f = File::open("hello.txt");
-            let f = match f {
-                Ok(file) => file,
-                Err(error) => panic!("Can't open the file {:?}", error),
-            };
-        }
+		<code style="font-size: 16px;" class="hljs rust" data-trim data-line-numbers>
+			fn open_file() -> Result< (), std::io::Error> {
+				let file: Result< std::fs::File, std::io::Error> = std::fs::File::open("hello.txt");
+				match file {
+					Ok(_) => Ok(()), Err(e) => Err(e),
+				}
+			}
+			fn main() {
+				match open_file() {
+					Ok(_) => println!("File is opened successfully!"),
+					Err(e) => panic!( "Not able to open file. Here is the reason {:?}", e.to_string()),
+				}
+			}
 		</code>
 	</pre>
 </section>
@@ -2751,7 +2899,7 @@ use std::fs::File;
 			<ul>
 				<li>Allow spawning futures as independent tasks, typically through some sort of '<a>spawn</a>' method.</li>
 				<li>Responsible for polling all futures until they are completed.</li>
-				<li>Can Switch to a different future whenever a future returns '<a>Poll::Pending</a>'.</li>
+				<li>Can switch to a different future whenever a future returns '<a>Poll::Pending</a>'.</li>
 			</ul>
 		</li>
 		<li><a>Wakers</a>
