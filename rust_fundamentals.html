@@ -76,19 +76,21 @@
 |  Topics: List of topics being covered in this presentation                  |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Topics</h2>
-	<ul style="font-size: 32px;">
+	<h3>Topics</h3>
+	<ul style="font-size: 28px;">
 		<li><a href="#/2">Basics of Rust</a></li>
 		<li><a href="#/6">Data types</a></li>
 		<li><a href="#/32">Functions</a></li>
 		<li><a href="#/47">Strings</a></li>
 		<li><a href="#/55">Ownership</a></li>
 		<li><a href="#/62">Traits</a></li>
+		<li><a href="#/74">Lifetimes</a></li>
+		<li><a href="#/75">Visibility Modifiers</a></li>
 		<li><a href="#/76">Memory Management</a></li>
 		<li><a href="#/101">Control Flow</a></li>
-		<li><a href="#/115">Error Handling</a></li>
-		<li><a href="#/127">Concurrency</a></li>
-		<li><a href="#/135">Async and Await</a></li>
+		<li><a href="#/114">Error Handling</a></li>
+		<li><a href="#/126">Concurrency</a></li>
+		<li><a href="#/134">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -108,20 +110,20 @@
 		<li>
 			How to install rust.
 			<p>
-				<a href="https://www.rust-lang.org/learn/get-started">https://www.rust-lang.org/learn/get-started</a>
+				<a href="https://www.rust-lang.org/learn/get-started" target="_blank">https://www.rust-lang.org/learn/get-started</a>
 			</p>
 		</li>
 		<li>
 			Rust tools.
 			<ul>
-				<li><a href="https://rustup.rs/">rustup</a></li>
+				<li><a href="https://rustup.rs/" target="_blank">rustup</a></li>
 				<li>cargo</li>
 				<li>rustc</a></li>
-				<li><a href="https://crates.io/">crates.io</a></li>
+				<li><a href="https://crates.io/" target="_blank">crates.io</a></li>
 			</ul>
 		</li>
 		<li>
-			<a href="https://codesandbox.io/p/sandbox/basics-of-rust-kbv4b4">Rust Project Structure</a>
+			<a href="https://codesandbox.io/p/sandbox/basics-of-rust-kbv4b4" target="_blank">Rust Project Structure</a>
 		</li>
 	</ol>
 </section>
@@ -669,8 +671,8 @@
 <section>
 	<h2>Tuple structs</h2>
 	<ul style="font-size: 36px;">
-		<li><a>'tuple struct'</a> is a hybrid between tuple and struct.</li>
-		<li>Tuple structs have a name, but their fields don't.</li>
+		<li><a>'tuple struct'</a> is a hybrid between tuple and struct</li>
+		<li>Tuple structs have a name, but their fields don't</li>
 		<li>Declared with <a>struct</a> keyword, and then with a name followed by tuple </li>
 	</ul>
 	<pre data-id="code-animation">
@@ -696,7 +698,7 @@
 <section>
 	<h2>Enums</h2>
 	<ul style="font-size: 34px;">
-		<li>The <strong>`<a href="https://doc.rust-lang.org/std/keyword.enum.html" target="_blank">enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a>.</li>
+		<li>The <strong>`<a href="https://doc.rust-lang.org/std/keyword.enum.html" target="_blank">enum</a>`</strong> keyword allows the creation of a type which may be <a>one of a few different variants</a></li>
 		<li>Any variant which is valid as a struct is also valid as an enum</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 16px;">
@@ -752,7 +754,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Define a Function in Rust</h3>
-	<p>Function is a <a>reusable</a> block of code, in Rust <strong>`<a href="https://doc.rust-lang.org/std/keyword.fn.html" target="_blank">fn</a>`</strong> keyword is used to define a function.</p>
+	<p>Function is a <a>reusable</a> block of code, in Rust <strong>`<a href="https://doc.rust-lang.org/std/keyword.fn.html" target="_blank">fn</a>`</strong> keyword is used to define a function</p>
 	<pre data-id="code-animation"> 
 		<code class="hljs rust" data-trim data-line-numbers>
 			//define a function
@@ -852,8 +854,8 @@
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">Traits</a></h3>
 	<ul>
-		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
-		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
+		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide</li>
+		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose</li>
 	</ul>
 </section>
 
@@ -923,10 +925,10 @@
 				}
 			}
 			fn main() {
-				println!("Output of Add: {}", Data {first_num:2, second_num: 2}.add());
-				println!("Output of Sub: {}", Data {first_num:4, second_num: 2}.sub());
-				println!("Output of Div: {}", Data {first_num:10, second_num: 2}.div());
-				println!("Output of Mul: {}", Data {first_num:2, second_num: 2}.mul());
+				println!("Output of Add: {}", Calc {first_num:2, second_num: 2}.add());
+				println!("Output of Sub: {}", Calc {first_num:4, second_num: 2}.sub());
+				println!("Output of Div: {}", Calc {first_num:10, second_num: 2}.div());
+				println!("Output of Mul: {}", Calc {first_num:2, second_num: 2}.mul());
 			}
 		</code>
 	</pre>
@@ -950,8 +952,8 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>Generic Functions</h3>
-	<p style="font-size: 32px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
+	<h4>Generic Functions</h4>
+	<p style="font-size: 30px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
 	<pre data-id="code-animation" style="font-size: 19px;">
 		Example using <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html" target="_blank">PartialOrd</a> trait:
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1012,7 +1014,7 @@
 <section>
 	<h3>Methods that access data</h3>
 	<ul style="font-size: 32px;">
-		<li>'new': a constructor that creates a new instance of the Rectangle struct.</li>
+		<li>'new': a constructor that creates a new instance of the Rectangle struct</li>
 		<li>'area': a method that calculates the area of the Rectangle and uses <strong>`<a href="https://doc.rust-lang.org/std/keyword.self.html" target="_blank">&self</a>`</strong> to access the data</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 18px;">
@@ -1041,8 +1043,8 @@
 <section>
 	<h2>Closures</h2>
 	<ul>
-		<li><a href="https://doc.rust-lang.org/book/ch13-01-closures.html" target="_blank">Closure</a> is an anonymous function that can capture values from the enclosing environment and defined using the `<strong><a>||</a></strong>` characters.</small></li>
-		<li>Optional body delimination `{ }` for a single expression (mandatory otherwise).</li>
+		<li><a href="https://doc.rust-lang.org/book/ch13-01-closures.html" target="_blank">Closure</a> is an anonymous function that can capture values from the enclosing environment and defined using the `<strong><a>||</a></strong>` characters</small></li>
+		<li>Optional body delimination `{ }` for a single expression (mandatory otherwise)</li>
 	</ul>
 	
 	<pre data-id="code-animation">
@@ -1114,10 +1116,10 @@
 <section>
 	<h2>String</h2>
 	<ul>
-		<li>Implemented as a smart pointer, specifically a Vec<u8>.</li>
+		<li>Implemented as a smart pointer, specifically a Vec<u8></li>
 		<li>Heap allocated, growable</li>
 		<li>Can be mutated</li>
-		<li>Always be a valid UTF-8, not null terminated sequence.</li>
+		<li>Always be a valid UTF-8, not null terminated sequence</li>
 	</ul>
 	<!-- <pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1154,9 +1156,9 @@
 <section>
 	<h2>&str</h2>
 	<ul>
-		<li>An immutable reference to a valid UTF-8 sequence.</li>
-		<li>May be anywhere, on the heap, stack, or in program memory.</li>
-		<li>Only seen as a borrowed value.</li>
+		<li>An immutable reference to a valid UTF-8 sequence</li>
+		<li>May be anywhere, on the heap, stack, or in program memory</li>
+		<li>Only seen as a borrowed value</li>
 		<li>Has a fixed size, the value is known at run time</li>
 	</ul>
 	<!-- <pre data-id="code-animation">
@@ -1257,11 +1259,11 @@
 <section>
 	<h3><a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html" target="_blank">Ownership</a></h3>
 	<ul>
-		<li>Every resource has a unique <strong><a>owner</a></strong>.</li>
-		<li>The <strong>owner</strong> can change the owning value according to mutability.</li>
-		<li>Ownership <a>can be transferred</a> to an other variable.</li>
-		<li>Owner <a>cannot free or mutate</a> its resource <a>while it is borrowed</a>.</li>
-		<li>Ownership model guarantees <a>safety</a>.</li>
+		<li>Every resource has a unique <strong><a>owner</a></strong></li>
+		<li>The <strong>owner</strong> can change the owning value according to mutability</li>
+		<li>Ownership <a>can be transferred</a> to an other variable</li>
+		<li>Owner <a>cannot free or mutate</a> its resource <a>while it is borrowed</a></li>
+		<li>Ownership model guarantees <a>safety</a></li>
 	</ul>
 </section>
 
@@ -1398,8 +1400,8 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">Traits</a></h3>
 	<ul>
-		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide.</li>
-		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose.</li>
+		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide</li>
+		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose</li>
 	</ul>
 </section>
 
@@ -1639,12 +1641,12 @@ fn main () {
 	<pre data-id="code-animation" style="font-size: 19px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			/// without where clause
-			pub fn calculate< T:Calculator, U:Display> (item: T, data: Display) -> u32 {
+			pub fn calculate< T:Calculator, U:Display> (item: T, data: U) -> u32 {
 				/// function's stuff
 			}
 			
 			///with where clause
-			pub fn calculate< T, U> (item: T, data: Display) -> u32 
+			pub fn calculate< T, U> (item: T, data: U) -> u32 
 			   where T: Calculator,
 					 U: Display
 			{
@@ -1661,11 +1663,11 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html" target="_blank">Lifetimes</a></h3>
 	<ul style="font-size: 28px;">
-		<li>It represents scope in which a reference is valid.</li>
-		<li>It ensures that references do not outlive the data they refer to. </li>
-		<li>By analyzing the lifetimes, the compiler can enforce memory safety.</li>
-		<li>Lifetimes are denoted by apostrophes ('), also known as "ticks." </li>
-		<li>Often used in function signatures, struct definitions, and generic type parameters to specify the relationship between references.</li>
+		<li>It represents scope in which a reference is valid</li>
+		<li>It ensures that references do not outlive the data they refer to</li>
+		<li>By analyzing the lifetimes, the compiler can enforce memory safety</li>
+		<li>Lifetimes are denoted by apostrophes ('), also known as "ticks" </li>
+		<li>Often used in function signatures, struct definitions, and generic type parameters to specify the relationship between references</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 18px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1744,11 +1746,11 @@ fn main () {
 <section>
 	<h2>Heap Memory</h2>
 	<ul style="font-size: 36px;">
-		<li>This is where all <a>dynamic data</a>(any data for which size cannot be calculated at compile time) <a>is stored</a>.</li>
-		<li>This is the biggest block of memory and the part managed by Rust’s Ownership model.</li>
-		<li><strong>Box:</strong> The <a href="https://doc.rust-lang.org/stable/rust-by-example/std/box.html" target="_blank">Box type</a> is an abstraction for a heap-allocated value in Rust.</li>
-		<li>Heap memory is allocated when <a>Box::new</a> is called.</li> 
-		<li>A <a>Box < T ></a> holds the <a>smart-pointer</a> to the heap memory, allocated for type T and the <a>reference is saved on the Stack</a>.</li>
+		<li>This is where all <a>dynamic data</a> (any data for which size cannot be calculated at compile time) <a>is stored</a></li>
+		<li>This is the biggest block of memory and the part managed by Rust’s Ownership model</li>
+		<li><strong>Box:</strong> The <a href="https://doc.rust-lang.org/stable/rust-by-example/std/box.html" target="_blank">Box type</a> is an abstraction for a heap-allocated value in Rust</li>
+		<li>Heap memory is allocated when <a>Box::new</a> is called</li> 
+		<li>A <a>Box < T ></a> holds the <a>smart-pointer</a> to the heap memory, allocated for type T and the <a>reference is saved on the Stack</a></li>
 	</ul>
 </section>
 
@@ -1758,9 +1760,9 @@ fn main () {
 <section>
 	<h2>Stack Memory</h2>
 	<ul>
-		<li>This is the Stack memory area and there is <a>one stack per thread</a>.</li>
-		<li>This is where <a>static values are allocated</a> by default. </li>
-		<li>Static data(data size known at compile time) includes function frames, primitive values, structs and pointers to dynamic data in Heap</li>
+		<li>This is the stack memory area and there is <a>one stack per thread</a></li>
+		<li>This is where <a>static values are allocated</a> by default </li>
+		<li>Static data (data size known at compile time) includes function frames, primitive values, structs and pointers to dynamic data in Heap</li>
 	</ul>
 </section>
 
@@ -1769,12 +1771,12 @@ fn main () {
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Memory Usage</h2>
-	<p>All values in Rust are allocated on the Stack by default. There are two <a>exceptions</a> to this</p>
+	<p>All values in Rust are allocated on the stack by default. There are two <a>exceptions</a> to this:</p>
 	<ol>
 		<li>When size of the value is dynamic like <a>Strings/Vectors</a></li>
 		<li>When you manually create a <a>Box < T ></a> value which is allocated on heap</li>
 	</ol>
-	<p>In both cases, the value will be allocated on Heap and its pointer will live on the Stack.</p>
+	<p>In both cases, the value will be allocated on heap and its pointer will live on the stack.</p>
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -1853,10 +1855,10 @@ fn main () {
 	<h2>Smart Pointers</h2>
 	<ul style="font-size: 36px;">
 		<li>A <a>pointer</a> is a general concept for a variable that <a>contains an address in memory</a>.</li>
-		<li>Smart pointers implement the `<a href="https://doc.rust-lang.org/std/ops/trait.Deref.html" target="_blank">Deref</a>` and `<a href="https://doc.rust-lang.org/std/ops/trait.Drop.html" target="_blank">Drop</a>` traits.</li>
+		<li>Smart pointers implement the `<a href="https://doc.rust-lang.org/std/ops/trait.Deref.html" target="_blank">Deref</a>` and `<a href="https://doc.rust-lang.org/std/ops/trait.Drop.html" target="_blank">Drop</a>` traits</li>
 		<ul>
-			<li>The Deref trait allows an instance of the smart pointer struct to behave like a reference so you can write your code to work with either references or smart pointers.</li>
-			<li>The Drop trait allows you to customize the code that’s run when an instance of the smart pointer goes out of scope.</li>
+			<li>The Deref trait allows an instance of the smart pointer struct to behave like a reference so you can write your code to work with either references or smart pointers</li>
+			<li>The Drop trait allows you to customize the code that automatically runs when an instance of the smart pointer goes out of scope</li>
 		</ul>
 	</ul>
 </section>
@@ -1867,10 +1869,10 @@ fn main () {
 <section>
 	<h3>Smart pointers in the std lib</h3>
 	<ul style="font-size: 38px;">
-		<li><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a> allows mutation even when only shared references are available</li>
+		<li>A mutable memory location. <a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a>  has the same in-memory representation as its inner type T</li>
 		<li><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> for allocating values on the heap</li>
-		<li><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a>, a reference counting type that enables multiple ownership</li>
-		<li><a href="https://doc.rust-lang.org/std/cell/struct.Ref.html" target="_blank">Ref< T ></a> and <a href="https://doc.rust-lang.org/std/cell/struct.RefMut.html" target="_blank">RefMut< T ></a>, accessed through <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a>, a type that enforces the borrowing rules at runtime instead of compile time</li>
+		<li><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a> for reference counting type that enables multiple ownership</li>
+		<li><a href="https://doc.rust-lang.org/std/cell/struct.Ref.html" target="_blank">Ref< T ></a> and <a href="https://doc.rust-lang.org/std/cell/struct.RefMut.html" target="_blank">RefMut< T ></a>- accessed through <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a>- a type that enforces the borrowing rules at runtime instead of compile time</li>
 		<li><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a> used to represent a cell that can be mutated even when aliased or shared</li>
 	</ul>
 </section>
@@ -1882,8 +1884,8 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a></h3>
 	<ul>
-		<li>`Cell< T >` is a type that provides interior mutability, allowing mutation of a value even when it is shared.</li>
-		<li>Used in single-threaded scenarios where you need to mutate a value while having shared references to it.</li>
+		<li>`Cell< T >` is a type that provides interior mutability, allowing mutation of a value even when it is shared</li>
+		<li>Used in single-threaded scenarios where you need to mutate a value while having shared references to it</li>
 	</ul>
 	<!-- <pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1914,10 +1916,10 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a></h3>
 	<ul style="font-size: 32px;">
-		<li>To enable multiple ownership explicitly by using the Rust type Rc< T >, which is an abbreviation for reference counting.</li>
-		<li>The Rc< T > type keeps track of the number of references to a value to determine whether or not the value is still in use</li>
-		<li>If there are zero references to a value, the value can be cleaned up without any references becoming invalid.</li>
-		<li>Rc< T > allows only immutable borrows checked at compile time</li>
+		<li>Rc< T > : (reference counting) enables <a>multiple ownership</a> explicitly by using the Rust type</T></li>
+		<li>The Rc< T > type keeps <a>track of the number of references</a> to a value to determine whether or not the value is still in use</li>
+		<li>If there are <a>zero references</a> to a value, the value can be <a>cleaned up</a> without any references becoming invalid </li>
+		<li>Rc< T > allows only <a>immutable borrows</a> checked at <a>compile time</a></li>
 	</ul>
 	<!-- pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1932,10 +1934,10 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a></h3>
 	<ul style="font-size: 32px;">
-		<li>RefCell< T > type represents single ownership over the data it holds.</li>
-		<li>At any given time, you can have either (but not both) one mutable reference or any number of immutable references.</li>
-		<li>Rc< T > enables multiple owners of the same data; <a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> and RefCell< T > have single owners.</li>
-		<li>RefCell< T > allows immutable or mutable borrows checked at runtime.</li>
+		<li>RefCell< T > type represents <a>single ownership</a> over the data it holds</li>
+		<li>At any given time, you can have either (but not both) one mutable reference <a>or</a> any number of immutable references</li>
+		<li>RefCell< T > allows immutable or mutable borrows <a>checked at runtime</a></li>
+		<li><a>RefCell< T > </a> and <a>Box< T > </a>have <a>single owners</a>; Rc< T > enables <a>multiple owners</a> of the same data</li>
 	</ul>
 	<!-- pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1949,9 +1951,9 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a></h3>
 	<ul style="font-size: 32px;">
-		<li>Provides a low-level mechanism to mutate a value even when aliased or shared, bypassing Rust's usual borrowing and ownership rules.</li>
-		<li>`UnsafeCell< T >` is essential for cases where you need mutable access to a value behind shared references but must ensure safety yourself.</li>
-		<li>Usage of UnsafeCell< T > typically takes place within unsafe blocks, allowing controlled, low-level manipulation while adhering to Rust's safety principles.</li>
+		<li>Provides a low-level mechanism to <a>mutate a value even when aliased or shared</a>, bypassing Rust's usual borrowing and ownership rules</li>
+		<li>`UnsafeCell< T >` is essential for cases where you <a>need mutable access</a> to a value behind shared references but must <a>ensure safety yourself</a></li>
+		<li>Usage of UnsafeCell< T > typically takes place <a>within unsafe blocks</a>, allowing controlled, low-level manipulation while adhering to Rust's safety principles</li>
 	</ul>
 	<!-- pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1974,8 +1976,8 @@ fn main () {
 <section>
 	<h3>if expression</h3>
 	<ul>
-		<li>The most common way to introduce control flow and branch code.</li>
-		<li>Provide a condition and then execute the block of code if the condition is met.</li>
+		<li>The most common way to introduce control flow and branch code</li>
+		<li>Provide a condition and then execute the block of code if the condition is met</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1995,8 +1997,8 @@ fn main () {
 <section>
 	<h3>if-else expression</h3>
 	<ul>
-		<li>An else expression can be added optionally.</li>
-		<li>If no else is provided the program will skip the if block if the condition is false.</li>
+		<li>An else expression can be added optionally</li>
+		<li>If no else is provided the program will skip the if block if the condition is false</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2019,8 +2021,8 @@ fn main () {
 <section>
 	<h3>else-if expression</h3>
 	<ul>
-		<li>If you have more than two condition to check, if and else can be combined in else if expression.</li>
-		<li>In the case all if and else if conditions evaluates to false, then the else block is executed.</li>
+		<li>If you have more than two condition to check, if and else can be combined in else-if expression</li>
+		<li>In the case all if and else if conditions evaluates to false, then the else block is executed</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2047,8 +2049,8 @@ fn main () {
 	<h3><a href="https://doc.rust-lang.org/std/keyword.match.html" target="_blank">match</a></h3>
 	<ul style="font-size: 33px;">
 		<li>Rust provides pattern matching with the match keyword</li>
-		<li>A scrutinee expression is provided to compare to the patterns.</li>
 		<li>Arms are evaluated and compared with the scrutineer expression</li>
+		<li>Each arm has a pattern and some code. The `<a>=></a>` operator separates the pattern and the code to run</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2067,34 +2069,6 @@ fn main () {
 	</pre>
 </section>
 
-<!----------------------------------------------------------------------------+
-|                                                                             |
-+----------------------------------------------------------------------------->
-<section>
-	<h3>match</h3>
-	<ul style="font-size: 33px;">
-		<li>Here the scrutineer expression is 'x'</li>
-		<li>Each arm has a pattern and some code. The `<a>=></a>` operator separates the pattern and the code to run.</li>
-		<li>The first arm with the matching pattern is chosen as the branch target of the match.</li>
-	</ul>
-	<pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			fn main(){
-				let x = 1;
-				match x {
-				  1 => println!(“one”),
-				  2 => println!(“two”),
-				  3 => println!(“three”),
-				  4 => println!(“four”),
-				  5 => println!(“five”),
-				  _ => println!(“something else”),
-				}
-			}							 
-		</code>
-		<!-- <p><input type="button" value="Run" class="RunButton" onclick="window.open('https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
-		<!-- <p><input type="button" value="Run" class="RunButton" onclick="OpenEditor('https://codesandbox.io/p/sandbox/flow-control-forked-fu4iwj?file=%2Fsrc%2Fmain.rs')"> in online editor</p> -->
-	</pre>
-</section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
@@ -2102,8 +2076,8 @@ fn main () {
 <section>
 	<h3>loop</h3>
 	<ul>
-		<li>Used to execute over block of code <a><strong><em>forever</em></strong></a>, or until it is stopped, or the program quits.</li>
-		<li>Instead of having this <strong>`<a href="https://doc.rust-lang.org/std/keyword.loop.html" target="_blank">loop</a>`</strong> infinitely the <strong>`<a href="https://doc.rust-lang.org/std/keyword.break.html" target="_blank">break</a>`</strong> keyword can be used.</li>
+		<li>Used to execute over block of code <a><strong><em>forever</em></strong></a>, or until it is stopped, or the program quits</li>
+		<li>Instead of having this <strong>`<a href="https://doc.rust-lang.org/std/keyword.loop.html" target="_blank">loop</a>`</strong> infinitely the <strong>`<a href="https://doc.rust-lang.org/std/keyword.break.html" target="_blank">break</a>`</strong> keyword can be used</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2128,7 +2102,7 @@ fn main () {
 	<h3><a href="https://doc.rust-lang.org/std/keyword.while.html" target="_blank">while</a></h3>
 	<ul>
 		<li>Conditional loops</li>
-		<li>Run until the condition is met or become false</li>
+		<li>Run until the condition is met or becomes false</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2158,8 +2132,8 @@ fn main () {
 		<li>Each pass of the loop extracts values</li>
 	</ul> -->
 	<ul>
-		<li>Iterate over a element in a collection.</li>
-		<li>Every iteration of loop extracts values.</li>
+		<li>Iterate over an element in a collection</li>
+		<li>Every iteration of loop extracts values</li>
 	</ul>
 
 	<pre data-id="code-animation">
@@ -2185,7 +2159,7 @@ fn main () {
 	<h3>iterators</h3>
 	<ul>
 		<li>In Rust, iterators help us achieve the process of looping.</li>
-		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/" target="_blank"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
+		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/" target="_blank"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2206,7 +2180,7 @@ fn main () {
 	<h3>iterator trait</h3>
 	<ul>
 		<li>In Rust, all iterators implement a trait named '<a href="https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html" target="_blank">iterator</a>' that has a method called <a><strong><em>next()</em></strong></a></li>
-		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/" target="_blank"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop.</li>
+		<li>Using the <a href="https://doc.rust-lang.org/stable/std/iter/" target="_blank"><strong><em>iter()</em></strong></a> function, we tell Rust that the given array can be used with a loop</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2227,9 +2201,9 @@ fn main () {
 <section>
 	<p style="font-size: 52px;"><strong>Difference  in into_iter, iter, iter_mut</strong></p>
 	<ul>
-		<li><a><strong><em>into_iter:</em></strong></a> Consumes the collection, once the collection has been consumed, it is no longer available for reuse.</li>
+		<li><a><strong><em>into_iter:</em></strong></a> Consumes the collection, once the collection has been consumed, it is no longer available for reuse</li>
 		<li><a><strong><em>iter:</em></strong></a> This borrows each element of the collection through each iteration, thus leaving the collection untouched and available for reuse after the loop</li>
-		<li><a><strong><em>iter_mut:</em></strong></a> This mutably borrows each element of the collection, allowing for the collection to be modified in place.</li>
+		<li><a><strong><em>iter_mut:</em></strong></a> This mutably borrows each element of the collection, allowing for the collection to be modified in place</li>
 	</ul>
 </section>
 
@@ -2326,9 +2300,9 @@ fn main () {
 <section>
 	<h3>Types of Error Handling</h3>
 	<ul>
-		<li>Error handling is process of anticipating and working with the possibility of failure</li>
-		<li>Learning how to handle errors in rust most effective and time saving</li>
-		<li>There are two types of Errors in rust</li>
+		<li>Error handling is the process of anticipating and working with the possibility of failure</li>
+		<li>Learning how to handle errors in rust is the most effective and time saving</li>
+		<li>There are two types of Errors in rust:</li>
 		<ul>
 			<li>Unrecoverable Errors</li>
 			<li>Recoverable Errors</li>
@@ -2342,7 +2316,7 @@ fn main () {
 <section>
 	<h2>Unrecoverable Errors</h2>
 	<p>Unrecoverable errors are symptoms of bugs</p>
-	<p><strong><a href="https://doc.rust-lang.org/std/macro.panic.html" target="_blank">panic!</a></strong> macro is a simplest way of handling errors</p>
+	<p><strong><a href="https://doc.rust-lang.org/std/macro.panic.html" target="_blank">panic!</a></strong> macro is the simplest way of handling errors</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 		fn main() {
@@ -2358,17 +2332,17 @@ fn main () {
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h3>What happens when panic is encountered</h3>
+	<h3>What happens when panic is encountered?</h3>
 	<ul>
 		<li>Failure message is printed</li>
 		<li>Program windups the stack </li>
 		<li>Then it quits</li>
 	</ul>
 	<p></p>
-	<h3>When to use panic ?</h3>
-	<ul>
-		<li>Panic only have to be used when a program comes to an <a>unrecoverable state.</a></li>
-	</ul>
+	<h3>When to use panic?</h3>
+	<p>
+		Panic should be used only when a program comes to an <a>unrecoverable state</a>
+	</p>
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -2377,7 +2351,7 @@ fn main () {
 <section>
 	<h3>Recoverable Errors</h3>
 	<p>Use of <strong><a href="https://doc.rust-lang.org/std/option/enum.Option.html" target="_blank">Option</a></strong> enum</p>
-	<p>Most errors aren’t serious enough that require a program to stop entirely</p>
+	<p>Most errors aren’t serious enough that requires a program to stop entirely</p>
 	<aside class="notes">
 		For example you try to open a file and that operation fails because the file doesn’t exist, you might want to create the file instead of terminating the process
 	</aside>
@@ -2403,9 +2377,9 @@ fn main () {
 <section>
 	<h2>Recoverable Errors</h2>
 	<p>Use of <strong><a href="https://doc.rust-lang.org/std/result/enum.Result.html" target="_blank">Result </a></strong> enum</p>
-	<p>Result type enum is used for most common errors, when a operation is expected to work but does not.</p>
+	<p>Result type enum is used for most common errors, when an operation is expected to work but it does not</p>
 	<!-- <p><small>For example you try to open a file and that operation fails because the file doesn’t exist, you might want to create the file instead of terminating the process</small></p> -->
-	<p><strong><a>Result  < T, E > </a></strong> enum is well suited when problems are expected.</p>
+	<p><strong><a>Result  < T, E > </a></strong> enum is well suited when problems are expected</p>
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 		fn main(){
@@ -2452,7 +2426,7 @@ use std::fs::File;
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>The ? operator</h2>
+	<h2>The '?' operator</h2>
 	<p>This is similar to match statement</p>
 	<pre data-id="code-animation" style="font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2466,7 +2440,7 @@ use std::fs::File;
 		}
 		</code>
 	</pre>
-	<p>The above code can be simplified using this <a>?</a></p>
+	<p>The above code can be simplified using this <a>'?'</a></p>
 	<pre data-id="code-animation" style="font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
     fn question() -> Result < (), Error> {
@@ -2487,9 +2461,9 @@ use std::fs::File;
 <section>
 	<h3>Error Propagation</h3>
 	<ul style="font-size: 28px;">
-		<li>Code must propagate error information back to caller function after detecting it.</li>
-		<li>One of the benefits is that your code will look cleaner by simply propagating error information back to the caller that can handle the error.</li>
-		<li>Other benefit is that your function doesn’t need extra code to propagate both the successful and unsuccessful cases.</li>
+		<li>Code must propagate error information <a>back to caller function</a> after detecting it</li>
+		<li>One of the benefits is that your <a>code will look cleaner</a> by simply propagating error information back to the caller that can handle the error</li>
+		<li>Other benefit is that your function <a>doesn’t need extra code</a> to propagate both the <a>successful</a> and <a>unsuccessful</a> cases</li>
 	</ul>
 	<pre data-id="code-animation">
 		<code style="font-size: 16px;" class="hljs rust" data-trim data-line-numbers>
@@ -2514,7 +2488,7 @@ use std::fs::File;
 	<h3>Range and Bounds Checking</h3>
 	<ul style="font-size: 33px;">
 		<li><a>Range Checking</a> ensures that a value falls within a specific acceptable range or interval</li>
-		<li><a>Bounds Checking</a> ensures that a index or reference to an element within a data structure (e.g. an array or slice) is within the valid bounds.</li>
+		<li><a>Bounds Checking</a> ensures that an index or reference to an element within a data structure (e.g. an array or slice) is within the valid bounds</li>
 	</ul>
 	<!-- <pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2577,9 +2551,8 @@ use std::fs::File;
 	<h2>Fearless Concurrency</h2>
 	<ul>
 		<li><a>Message-passing</a> concurrency, where <em>'channels'</em> <a>send messages</a> between <strong>threads</strong> </li>
-		<li><a>Shared-state</a> concurrency, where multiple between <strong>threads</strong> have <a>access to same piece of data</a></li>
+		<li><a>Shared-state</a> concurrency, where multiple <strong>threads</strong> have <a>access to same piece of data</a></li>
 		<li>The <em><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">Sync</a></em> and <em><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">Send</a></em> traits, which extend Rust’s concurrency guarantees to user-defined types as well as types provided by the standard library</li>
-		<li>To create threads to run multiple pieces of code at the same time</li>
 	</ul>
 </section>
 
@@ -2588,7 +2561,7 @@ use std::fs::File;
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Creating a New Thread</h3>
-	<p>To create a new thread, we call the <strong><a>thread::spawn</a></strong> function and pass it a <strong><a>closure</a></strong> containing the code we want to run in the new thread.</p>
+	<p>To create a new thread, we call the <strong><a>thread::spawn</a></strong> function and pass it a <strong><a>closure</a></strong> containing the code we want to run in the new thread</p>
 	<pre data-id="code-animation" style="height: 420px; font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 		use std::thread;
@@ -2618,8 +2591,8 @@ use std::fs::File;
 <section>
 	<h3>Creating a New Channel</h3>
 	<ul style="font-size: 32px;">
-		<li><strong><a>Channel</a></strong> has two haves: <strong><a>transmitter</a></strong> and <strong><a>receiver</a></strong></li>
-		<li>One thread uses transmitter to <strong><a>send</a></strong> data on the channel.</li>
+		<li><strong><a>Channel</a></strong> has two halves: <strong><a>transmitter</a></strong> and <strong><a>receiver</a></strong></li>
+		<li>One thread uses transmitter to <strong><a>send</a></strong> data on the channel</li>
 		<li>Other thread uses receiver to <strong><a>receive</a></strong> data from the channel</li>
 		<li>Channel is <strong><a>closed</a></strong> if either transmitter or receiver is <strong><a>dropped</a></strong></li>
 	</ul>
@@ -2650,9 +2623,9 @@ use std::fs::File;
 <section>
 	<h3>Shared-State Concurrency</h3>
 	<ul style="font-size: 32px;">
-		<li>Shared memory concurrency is like <a>multiple ownership</a>.</li>
-		<li>Multiple threads can access same data at the same time.</li>
-		<li>`Mutex` ensures access to shared data to only thread at a time.</li>
+		<li>Shared memory concurrency is like <a>multiple ownership</a></li>
+		<li>Multiple threads can access same data at the same time</li>
+		<li>`Mutex` ensures access to shared data to only one thread at a time</li>
 	</ul>
 	<pre data-id="code-animation" style="height: 400px; font-size: 16px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2687,9 +2660,9 @@ use std::fs::File;
 	<h2>Send and Sync Traits</h2>
 	<ul style="font-size: 34px;">
 		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">`Send` marker</a></strong> trait indicates that <a>ownership</a> of values of the type can be <a>transferred</a> between threads.</li>
-		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">`Sync` marker</a></strong> trait indicates that it is safe to be <a>shared</a> between threads.</li>
-		<li>Any type <strong><a>< T ></a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">Sync</a></strong> if <strong><a>&T</a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">Send</a></strong>, meaning the immutable reference can be sent safely to another thread.</li>
-		<li>Similar to Send, primitive types are Sync, and types composed entirely of types that are Sync are also Sync.</li>
+		<li>The <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">`Sync` marker</a></strong> trait indicates that it is safe to be <a>shared</a> between threads</li>
+		<li>Any type <strong><a>< T ></a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Sync.html" target="_blank">Sync</a></strong> if <strong><a>&T</a></strong> is <strong><a href="https://doc.rust-lang.org/std/marker/trait.Send.html" target="_blank">Send</a></strong>, meaning the immutable reference can be sent safely to another thread</li>
+		<li>Similar to Send, primitive types are Sync, and types composed entirely of types that are Sync are also Sync</li>
 	</ul>
 </section>
 
@@ -2698,7 +2671,7 @@ use std::fs::File;
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Send Trait</h2>
-	<p style="font-size: 38px;">If a type implements <a>Send</a>, it is guaranteed to be <a>safe to `move`</a> between threads. It means that multiple threads can <a>use</a> a value of a type</p>
+	<p style="font-size: 38px;">If a type implements <a>Send</a>, it is guaranteed to be <a>safe to `move`</a> between threads. It means that multiple threads can <a>use</a> a value of that type</p>
 	<pre data-id="code-animation" style="font-size: 22px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 		use std::thread;
@@ -2719,7 +2692,7 @@ use std::fs::File;
 +----------------------------------------------------------------------------->
 <section>
 	<h2>Sync Trait</h2>
-	<p style="font-size: 33px;">If a type implements <a>Sync</a>, it is guaranteed to be <a>safe to share</a> between threads and a value of a type can be <a>accessed</a> in multiple threads at the <a>same time</a></p>
+	<p style="font-size: 33px;">If a type implements <a>Sync</a>, it is guaranteed to be <a>safe to share</a> between threads and a value of that type can be <a>accessed</a> in multiple threads at the <a>same time</a></p>
 	<pre data-id="code-animation" style="font-size: 18px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 		use std::sync::Arc;
@@ -2737,7 +2710,7 @@ use std::fs::File;
 		}
 		</code>
 	</pre>
-	<P style="font-size: 33px;">Use `Arc` instead of a raw pointer, it provides thread-safety and prevent data race conditions.</P>
+	<P style="font-size: 33px;">Use `Arc` instead of a raw pointer, it provides thread-safety and prevent data race conditions</P>
 </section>
 
 <!----------------------------------------------------------------------------+
@@ -2761,15 +2734,15 @@ use std::fs::File;
 <section>
 	<h2>Multitasking</h2>
 	<ul>
-		<li>One of the fundamental features of most operating systems is multitasking, which is the ability to <a>execute multiple tasks concurrently</a>.</li>
+		<li>One of the fundamental features of most operating systems is multitasking, which is the ability to <a>execute multiple tasks concurrently</a></li>
 		<br>
 		
 		<ul>
-			<li><a>Preemptive Multitasking</a>
-				<P style="font-size: 32px;">Preemptive multitasking is that the operating system controls when to switch tasks.</P>
+			<li><a>Pre-emptive Multitasking</a>
+				<P style="font-size: 32px;">Pre-emptive multitasking is that the operating system controls when to switch tasks</P>
 			</li>
-			<li><a>Cooperative Multitasking</a>
-				<p style="font-size: 32px;">Cooperative multitasking lets each task run until it voluntarily gives up control of the CPU.</p>
+			<li><a>Co-operative Multitasking</a>
+				<p style="font-size: 32px;">Co-operative multitasking lets each task run until it voluntarily gives up control of the CPU</p>
 			</li>
 		</ul>
 	</ul>
@@ -2781,7 +2754,7 @@ use std::fs::File;
 <section>
 	<h2>Async / Await</h2>
 	<ul>
-		<li>Built-in tool in rust programming for writing asynchronous functions.</li>
+		<li>Built-in tool in rust programming for writing asynchronous functions</li>
 		<br>
 		<ul style="font-size: 34px;">
 			<li><a href="https://doc.rust-lang.org/std/keyword.async.html" target="_blank">async</a>
@@ -2803,8 +2776,8 @@ use std::fs::File;
 <section>
 	<h2>Futures</h2>
 	<ul style="font-size: 32px;">
-		<li>A future represents a value that might not be available yet.</li>
-		<li>Futures make it possible to continue execution until the value is available.</li>
+		<li>A future represents a value that might not be available yet</li>
+		<li>Futures make it possible to continue execution until the value is available</li>
 	</ul>
 	<pre data-id="code-animation" style="font-size: 20px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2845,7 +2818,7 @@ use std::fs::File;
 +----------------------------------------------------------------------------->
 <section>
 	<h3>The async/await Pattern</h3>
-	<p>async/await pattern let the programmer write code that looks like normal synchronous code, but the <a>compiler turns it into asynchronous</a> at compile time.</p>
+	<p>async/await pattern lets the programmer write code that looks like normal synchronous code, but the <a>compiler turns it into asynchronous</a> at compile time.</p>
 	<pre data-id="code-animation" style="font-size: 21px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			async fn foo() -> u32 {
@@ -2897,15 +2870,15 @@ use std::fs::File;
 	<ul style="font-size: 32px;">
 		<li><a>Executors</a>
 			<ul>
-				<li>Allow spawning futures as independent tasks, typically through some sort of '<a>spawn</a>' method.</li>
+				<li>Allows spawning futures as independent tasks, typically through some sort of '<a>spawn</a>' method</li>
 				<li>Responsible for polling all futures until they are completed.</li>
-				<li>Can switch to a different future whenever a future returns '<a>Poll::Pending</a>'.</li>
+				<li>Can switch to a different future whenever a future returns '<a>Poll::Pending</a>'</li>
 			</ul>
 		</li>
 		<li><a>Wakers</a>
 			<ul>
-				<li>Wakers are objects that are used to wake up a task that is blocked waiting for some event to occur.</li>
-				<li>Wakers are typically created by executors and passed to tasks, allowing tasks to be woken up when the relevant event occurs.</li>
+				<li>Wakers are objects that are used to wake up a task that is blocked waiting for some event to occur</li>
+				<li>Wakers are typically created by executors and passed to tasks, allowing tasks to be woken up when the relevant event occurs</li>
 			</ul>
 		</li>
 	</ul>
