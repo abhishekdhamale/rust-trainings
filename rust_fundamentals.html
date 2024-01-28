@@ -1884,8 +1884,8 @@ fn main () {
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a></h3>
 	<ul>
-		<li>`Cell< T >` is a type that provides interior mutability, allowing mutation of a value even when it is shared</li>
-		<li>Used in single-threaded scenarios where you need to mutate a value while having shared references to it</li>
+		<li>`Cell< T >` has the same memory layout and caveats as `UnsafeCell< T >` </li>
+		<li>This means that `Cell< T >` has the same in-memory representation as its inner type T </li>
 	</ul>
 	<!-- <pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
