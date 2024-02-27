@@ -84,13 +84,13 @@
 		<li><a href="#/47">Strings</a></li>
 		<li><a href="#/55">Ownership</a></li>
 		<li><a href="#/62">Traits</a></li>
-		<li><a href="#/74">Lifetimes</a></li>
-		<li><a href="#/75">Visibility Modifiers</a></li>
-		<li><a href="#/76">Memory Management</a></li>
-		<li><a href="#/101">Control Flow</a></li>
-		<li><a href="#/114">Error Handling</a></li>
-		<li><a href="#/126">Concurrency</a></li>
-		<li><a href="#/134">Async and Await</a></li>
+		<li><a href="#/70">Lifetimes</a></li>
+		<li><a href="#/71">Visibility Modifiers</a></li>
+		<li><a href="#/72">Memory Management</a></li>
+		<li><a href="#/98">Control Flow</a></li>
+		<li><a href="#/111">Error Handling</a></li>
+		<li><a href="#/123">Concurrency</a></li>
+		<li><a href="#/131">Async and Await</a></li>
 	</ul>
 </section>
 
@@ -569,14 +569,11 @@
 <section>
 	<h2>Compound Types</h2>
 	<p><strong>Exercise-1</strong></p>
-	<p><small>(clue: all the array elements should be of same type)</small></p>
+	<!-- <p><small>(clue: all the array elements should be of same type)</small></p> -->
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn main() {
-
-				// Fix the error
 				let _arr = [1, 2, '3'];
-			
 				println!("Success!");
 			}							 
 		</code>
@@ -591,12 +588,12 @@
 <section>
 	<h2>Compound Types</h2>
 	<p><strong>Exercise-2</strong></p>
-	<p><small>(clue: indexing should start from 0)</small></p>
+	<!-- <p><small>(clue: indexing should start from 0)</small></p> -->
 	<pre data-id="code-animation">
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn main() {
 				let arr = ['a', 'b', 'c'];
-				let ele = arr[1]; // Only modify this line to make the code work!
+				let ele = arr[1];
 				assert!(ele == 'a');
 				println!("Success!");
 			}
@@ -610,7 +607,7 @@
 |                                                                             |
 +----------------------------------------------------------------------------->
 <section>
-	<h2>Structure</h2>
+	<h2>Data Structure</h2>
 	<ul>
 		<li>Structs hold multiple related values</li>
 		<li>In a struct you’ll name each piece of data so it’s clear what the values mean</li>
@@ -740,6 +737,7 @@
 		<li>Calling a Function in Rust</li>
 		<li>Function Parameters</li>
 		<li>Function with Return Value</li>
+		<li>Traits</li>
 		<li>Memory Management</li>
 		<li>Generic Functions</li>
 		<li>Associated Functions</li>
@@ -954,8 +952,8 @@
 <section>
 	<h4>Generic Functions</h4>
 	<p style="font-size: 30px;">Generic parameters allow a function, struct, or enum to work with multiple types, instead of just one specific type. You can specify generic parameters in a function signature by enclosing them in angle brackets (< >) after the function name.</p>
-	<pre data-id="code-animation" style="font-size: 19px;">
-		Example using <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html" target="_blank">PartialOrd</a> trait:
+	<pre data-id="code-animation" style="font-size: 18px;">
+		Example using <a href="https://doc.rust-lang.org/std/cmp/trait.PartialOrd.html" target="_blank">PartialOrd</a> trait
 		<code class="hljs rust" data-trim data-line-numbers>
 			fn min< T:PartialOrd > (a: T, b: T) -> T {
 				if a < b {
@@ -964,17 +962,17 @@
 					b
 				}
 			}
-
 			fn main(){
 				let x = min(5, 10);              // integer
 				let y = min(5.0, 10.0);          // float
 				let z = min("hello", "world");   // string
-				
 				println!("x: {x}");
 				println!("y: {y}");
 				println!("z: {z}");
 			}
 		</code>
+		<a href="https://doc.rust-lang.org/std/primitive.i32.html" target="_blank">i32</a> | <a href="https://doc.rust-lang.org/std/primitive.f64.html" target="_blank">f64</a> | <a href="https://doc.rust-lang.org/std/string/struct.String.html" target="_blank">string</a>
+
 	</pre>
 	
 </section>
@@ -1222,7 +1220,7 @@
 +----------------------------------------------------------------------------->
 <section>
 	<h3>Operations on Strings</h3>
-	<small>concatenation | appending | slicing | splitting | replacing | iterating | checking starts prefix | checkin ends suffix</small>
+	<small>concatenation | appending | slicing | splitting | replacing | iterating | checking starts prefix | checking ends suffix</small>
 	<pre data-id="code-animation" style="height: 420px;">
 		<code class="hljs rust" data-trim data-line-numbers>
 			let s1 = String::from("hello world");
@@ -1397,18 +1395,18 @@ fn main () {
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<h3><a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">Traits</a></h3>
 	<ul>
 		<li><strong><em>'Traits'</em></strong> are the abstract mechanism for adding functionality to types or it tells <em>Rust compiler</em> about functionality a type <strong><a>must</a></strong> provide</li>
 		<li><strong><em>'Traits'</em></strong></a> are a way to group methods to define a set of <strong><a>behavior</a></strong> necessary to accomplish some purpose</li>
 	</ul>
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<h3>Trait Definition</h3>
 	<ul>
 		<li>Traits are defined by the <strong>`<a href="https://doc.rust-lang.org/std/keyword.trait.html" target="_blank">trait</a>`</strong> keyword followed by the name of the trait</li>
@@ -1424,12 +1422,12 @@ fn main () {
 			}
 		</code>
 	</pre>
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<h3>Trait implementation</h3>
 	<ul>
 		<li><strong>`<a href="https://doc.rust-lang.org/std/keyword.impl.html" target="_blank">impl</a>`</strong> keyword used to implement a trait</li>
@@ -1443,12 +1441,12 @@ fn main () {
 			}
 		</code>
 	</pre>
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<p><strong>Example</strong></p>
 	<pre data-id="code-animation" style="width: 800px; height: 420px; font-size: 14px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -1491,7 +1489,7 @@ fn main () {
 		Output of Mul: 4
 		</code>
 	</pre>
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
@@ -1869,17 +1867,32 @@ fn main () {
 <section>
 	<h3>Smart pointers in the std lib</h3>
 	<ul style="font-size: 38px;">
+		<li><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a> used to represent a cell that can be mutated even when aliased or shared</li>
 		<li>A mutable memory location. <a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a>  has the same in-memory representation as its inner type T</li>
 		<li><a href="https://doc.rust-lang.org/std/boxed/struct.Box.html" target="_blank">Box< T ></a> for allocating values on the heap</li>
 		<li><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a> for reference counting type that enables multiple ownership</li>
 		<li><a href="https://doc.rust-lang.org/std/cell/struct.Ref.html" target="_blank">Ref< T ></a> and <a href="https://doc.rust-lang.org/std/cell/struct.RefMut.html" target="_blank">RefMut< T ></a>- accessed through <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html" target="_blank">RefCell< T ></a>- a type that enforces the borrowing rules at runtime instead of compile time</li>
-		<li><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a> used to represent a cell that can be mutated even when aliased or shared</li>
+
 	</ul>
 </section>
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
+
+<section>
+	<h3><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a></h3>
+	<ul style="font-size: 32px;">
+		<li>Provides a low-level mechanism to <a>mutate a value even when aliased or shared</a>, bypassing Rust's usual borrowing and ownership rules</li>
+		<li>`UnsafeCell< T >` is essential for cases where you <a>need mutable access</a> to a value behind shared references but must <a>ensure safety yourself</a></li>
+		<li>Usage of UnsafeCell< T > typically takes place <a>within unsafe blocks</a>, allowing controlled, low-level manipulation while adhering to Rust's safety principles</li>
+	</ul>
+	<!-- pre data-id="code-animation">
+		<code class="hljs rust" data-trim data-line-numbers>
+			// code here
+		</code>
+	</pre -->
+</section>
 
 <section>
 	<h3><a href="https://doc.rust-lang.org/std/cell/struct.Cell.html" target="_blank">Cell< T ></a></h3>
@@ -1928,6 +1941,11 @@ fn main () {
 	</pre -->
 </section>
 
+<section>
+	<h3><a href="https://doc.rust-lang.org/std/rc/struct.Rc.html" target="_blank">Rc< T ></a></h3>
+	<img data-src="images/rc.png" style="height: 400px;">
+</section>
+
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
@@ -1945,23 +1963,6 @@ fn main () {
 		</code>
 	</pre -->
 </section>
-
-
-
-<section>
-	<h3><a href="https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html" target="_blank">UnsafeCell< T ></a></h3>
-	<ul style="font-size: 32px;">
-		<li>Provides a low-level mechanism to <a>mutate a value even when aliased or shared</a>, bypassing Rust's usual borrowing and ownership rules</li>
-		<li>`UnsafeCell< T >` is essential for cases where you <a>need mutable access</a> to a value behind shared references but must <a>ensure safety yourself</a></li>
-		<li>Usage of UnsafeCell< T > typically takes place <a>within unsafe blocks</a>, allowing controlled, low-level manipulation while adhering to Rust's safety principles</li>
-	</ul>
-	<!-- pre data-id="code-animation">
-		<code class="hljs rust" data-trim data-line-numbers>
-			// code here
-		</code>
-	</pre -->
-</section>
-
 
 <!----------------------------------------------------------------------------+
 | Title Slide for topic: Control flow                                         |
@@ -2816,7 +2817,7 @@ use std::fs::File;
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<h3>The async/await Pattern</h3>
 	<p>async/await pattern lets the programmer write code that looks like normal synchronous code, but the <a>compiler turns it into asynchronous</a> at compile time.</p>
 	<pre data-id="code-animation" style="font-size: 21px;">
@@ -2834,13 +2835,13 @@ use std::fs::File;
 			}
 		</code>
 	</pre>
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
 
-<section>
+<!-- <section>
 	<h3>State Machine Transformation</h3>
 	<pre data-id="code-animation" style="font-size: 21px;">
 		<code class="hljs rust" data-trim data-line-numbers>
@@ -2854,18 +2855,18 @@ use std::fs::File;
 			}
 		</code>
 	</pre>
-</section>
+</section> -->
 
 
-<section>
+<!-- <section>
 	<h3>State Machine Transformation</h3>
 	<img data-src="images/state_machine.png">
-</section>
+</section> -->
 
 <!----------------------------------------------------------------------------+
 |                                                                             |
 +----------------------------------------------------------------------------->
-<section>
+<!-- <section>
 	<h2>Executors and Wakers</h2>
 	<ul style="font-size: 32px;">
 		<li><a>Executors</a>
@@ -2882,7 +2883,7 @@ use std::fs::File;
 			</ul>
 		</li>
 	</ul>
-</section>
+</section> -->
 
 <section>
 	<h1>Thank You</h1>
